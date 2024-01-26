@@ -5,10 +5,11 @@ import  SolarTitle  from './components/SolarTitle'
 
 export default function App() {
   return (
-    <div className='flex justify-between m-8'>
-      <SolarTitle />
-      <SolarData />
-      
+    <div className='h-screen bg-gradient-to-b from-orange-500 to-yellow-300'>
+      <div className='flex justify-between m-8'>
+        <SolarTitle />
+        <SolarData />
+      </div>
     </div>
   )
 }
