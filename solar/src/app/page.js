@@ -2,6 +2,7 @@ import Image from "next/image";
 import SolarData from "@/components/SolarData";
 import SolarTitle from "@/components/SolarTitle";
 import Graph from "@/components/Graph";
+import getCurrentDate from "@/components/getDate";
 import "../app.css"
 
 async function getSolar() {
@@ -9,7 +10,7 @@ async function getSolar() {
   const res = await fetch(`https://api.solar.sheffield.ac.uk/pvlive/api/v4/pes/12`)
   return res.json()
 }
-
+let currentDate = getCurrentDate()
 export default async function Home() {
   
   const data =getSolar()
@@ -18,7 +19,8 @@ export default async function Home() {
   return (
     <div className='h-screen bg-gradient-to-b from-orange-500 to-yellow-300'>
       <div className='flex justify-between m-8'>
-       <p>{solar}</p>
+        <p>{currentDate}</p>
+        <p>{solar}</p>
         <SolarTitle />
         <SolarData />
       </div>
