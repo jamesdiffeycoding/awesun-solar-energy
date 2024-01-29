@@ -1,39 +1,47 @@
 .graph {
-    background-color: red;
-    display: flex;
-    justify-content: center;
-    flex-wrap: nowrap;
-    width: 99vw;
-    height: 90vh;
-  }
-  .verticalstrip {
-    height: 100%;
-    display: flex;
-    align-items: flex-end;
-    background-color: lightblue;
-    flex-basis: 0.25%;
-  }
-  .bar {
-    background-color: black;
-    border-radius: 10px 10px 0 0;
-    flex-grow: 1;
-  }
-  .verticalstrip:hover {
-    background-color: white !important;
-  }
-  .small {
-    height: 3rem;
-  }
-  .med {
-    height: 6rem;
-  }
-  .tall {
-    height: 9rem
-  }
-  /* POPUP */
-  .message-container {
-    text-align: center;
-  }
-  .message {
-    display: none;
-  }
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  width: 99vw;
+  height: 30vh;
+  min-height: 500px;
+}
+.verticalstrip {
+  display: flex;
+  height: 100%;
+  align-items: flex-end;
+  background-color: lightblue;
+  /* flex-basis: 0.25%; */
+}
+.bar {
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px 10px 0 0;
+  width: 100%;
+  /* flex-grow: 1; */
+}
+
+.break{
+  background-color: rgb(255, 15, 15);
+  width: 1px;
+  height: 100%;
+}
+.verticalstrip:hover {
+  background-color: white !important;
+}
+.small {
+  height: 3rem;
+}
+.med {
+  height: 6rem;
+}
+.tall {
+  height: 9rem
+}
+/* POPUP */
+.message-container {
+  text-align: center;
+}
+.message {
+  display: none;
+}
