@@ -26,8 +26,8 @@ export default function App() {
       <div className='flex justify-between m-8'>
         <SolarTitle />
         <SolarData />
-        <Graph />
       </div>
+        <Graph />dgsasdf
     </div>
   )
 }
