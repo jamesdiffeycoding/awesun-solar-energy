@@ -1,12 +1,12 @@
 // Solar Data
 
-export default function SolarData({currentDate}) {
+export default function SolarData({endDateAndTime}) {
 	const randomNum = Math.floor(Math.random() * 6);
 	return (
         <div>
             <h1 className="text-slate-950">awesun sunbers</h1>
             <p>{randomNum}GW</p>
-            <p>Current date: {currentDate}</p>
+            <p>Current date: {endDateAndTime}</p>
         </div>
 	);
 }

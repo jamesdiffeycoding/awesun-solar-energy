@@ -1,4 +1,6 @@
-export function getCurrentDate() {
+export function getEndDate() {
+    console.log("GetEndDate called")
+
     const now = new Date();
     const year = now.getFullYear();
     const month = String(now.getMonth() + 1).padStart(2, '0');
@@ -7,7 +9,9 @@ export function getCurrentDate() {
     return formattedDate
 }
 
-export function getCurrentTime() {
+export function getEndTime() {
+    console.log("GetEndTime called")
+
     const now = new Date();
     const hours = String(now.getHours()).padStart(2, '0');
     const minutes = String(now.getMinutes()).padStart(2, '0');
@@ -17,7 +21,8 @@ export function getCurrentTime() {
 }
 
 
-export function getCurrentDateAndTime() {
+export function getEndDateAndTime() {
+    console.log("GetEndDateAndTime called")
     const now = new Date();
 
     const year = now.getFullYear();
@@ -34,9 +39,10 @@ export function getCurrentDateAndTime() {
 
 
 export function getStartingDate() {
-    let currentDate = getCurrentDate();
+    console.log("GetStartingDate called")
+    let EndDate = getEndDate();
     // Convert the input string to a Date object
-    const dateObject = new Date(currentDate);
+    const dateObject = new Date(EndDate);
     // Subtract 35 days from the date
     dateObject.setDate(dateObject.getDate() - 35);
     // Get the year, month, and day components from the date
