@@ -61,13 +61,8 @@ export default async function Home() {
         <SolarTitle />
         <SolarData />
       </div>
-<<<<<<< HEAD
-    </div> 
-        <Graphs />
-=======
-    </div> */}
         <Graphs dayTimeSolarDataWeek={dayTimeSolarDataWeek} dayTimeSolarDataBarWidthWeek={dayTimeSolarDataBarWidthWeek} highestSolarDataValueWeek={highestSolarDataValueWeek} dayTimeSolarDataMonth={dayTimeSolarDataMonth} dayTimeSolarDataBarWidthMonth={dayTimeSolarDataBarWidthMonth} highestSolarDataValueMonth={highestSolarDataValueMonth} dayTimeSolarDataYear={dayTimeSolarDataYear} dayTimeSolarDataBarWidthYear={dayTimeSolarDataBarWidthYear} highestSolarDataValueYear={highestSolarDataValueYear} />
->>>>>>> d1ed48db38e7c2cfea385306404ecc0f1ded001d
+    </div> 
   </>
   )
 }
