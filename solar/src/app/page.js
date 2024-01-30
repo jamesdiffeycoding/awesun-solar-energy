@@ -1,7 +1,7 @@
 // COMPONENTS
 import SolarData from "@/components/SolarData";
 import SolarTitle from "@/components/SolarTitle";
-import WeekGraph from "@/components/WeekGraph";
+import Graphs from "@/components/Graphs";
 
 // HELPER FUNCTIONS
 
@@ -13,7 +13,7 @@ export default async function Home() {
         <SolarData />
       </div>
     </div> */}
-        <WeekGraph />
+        <Graphs />
   </>
   )
 }

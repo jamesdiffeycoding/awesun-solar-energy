@@ -4,7 +4,7 @@
   justify-content: center;
   flex-wrap: nowrap;
   width: 99vw;
-  height: 30vh;
+  height: 20vh;
   min-height: 500px;
 }
 .verticalstrip {
@@ -22,12 +22,12 @@
 }
 
 .break{
-  background-color: rgb(255, 15, 15);
+  background-color: rgb(255, 255, 255);
   width: 1px;
   height: 100%;
 }
 .verticalstrip:hover {
-  background-color: white !important;
+  background-color: rgb(255, 182, 80) !important;
 }
 .small {
   height: 3rem;
@@ -39,9 +39,19 @@
   height: 9rem
 }
 /* POPUP */
-.message-container {
-  text-align: center;
+.popup-data{
+  color: rgb(0, 0, 0);
+  background-color: rgb(93, 133, 255);
+  padding: 1rem;
+  /* display: none; */
 }
-.message {
-  display: none;
+.verticalstrip:hover .popup-container {
+  display: block;
+}
+
+.bottom-banner {
+    width: 100vw; /* This will cause the item to take up the entire width and wrap onto the next line */
+    background-color: rgb(255, 255, 255);
+    color: black;
+
 }

@@ -38,13 +38,13 @@ export function getEndDateAndTime() {
 }
 
 
-export function getStartingDate() {
+export function getStartingDate(numberOfDays) {
     console.log("GetStartingDate called")
     let EndDate = getEndDate();
     // Convert the input string to a Date object
     const dateObject = new Date(EndDate);
     // Subtract 35 days from the date
-    dateObject.setDate(dateObject.getDate() - 7);
+    dateObject.setDate(dateObject.getDate() - numberOfDays);
     // Get the year, month, and day components from the date
     const year = dateObject.getFullYear();
     const month = String(dateObject.getMonth() + 1).padStart(2, '0');
