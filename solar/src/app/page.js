@@ -56,10 +56,10 @@ export default async function Home() {
   const highestSolarDataValueYear= Math.max(...dayTimeSolarDataYear.map(solardata=>solardata[2]))
 
   return (<>
-    <div className='h-screen bg-gradient-to-b from-orange-500 to-yellow-300'>
+    <div className='background'>
       <div className='flex justify-between m-8'>
         <SolarTitle />
-        <SolarData />
+        <SolarData highestSolarDataValueWeek={highestSolarDataValueWeek} highestSolarDataValueMonth={highestSolarDataValueMonth} highestSolarDataValueYear={highestSolarDataValueYear}/>
       </div>
         <Graphs dayTimeSolarDataWeek={dayTimeSolarDataWeek} dayTimeSolarDataBarWidthWeek={dayTimeSolarDataBarWidthWeek} highestSolarDataValueWeek={highestSolarDataValueWeek} dayTimeSolarDataMonth={dayTimeSolarDataMonth} dayTimeSolarDataBarWidthMonth={dayTimeSolarDataBarWidthMonth} highestSolarDataValueMonth={highestSolarDataValueMonth} dayTimeSolarDataYear={dayTimeSolarDataYear} dayTimeSolarDataBarWidthYear={dayTimeSolarDataBarWidthYear} highestSolarDataValueYear={highestSolarDataValueYear} />
     </div> 

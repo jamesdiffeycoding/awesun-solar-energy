@@ -1,7 +1,7 @@
 export default function SolarTitle() {
 	return (
         <div>
-            <h1>awesun sunbers</h1>
+            <h1 className="font-black">AWESUN</h1>
         </div>
 	);
 }
