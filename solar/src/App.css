@@ -16,6 +16,7 @@
 }
 .bar {
   background-color: rgb(255, 255, 255);
+  /* background-color: blue; */
   border-radius: 10px 10px 0 0;
   width: 100%;
   /* flex-grow: 1; */
