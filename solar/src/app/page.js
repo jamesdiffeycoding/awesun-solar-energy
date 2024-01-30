@@ -17,8 +17,6 @@ let startingDateYear = getStartingDate(365)
 
 // SOLAR FETCH
 async function getSolar(startingDate, startingTime, EndDate, EndTime) {
-  // const res = await fetch(`https://api.solar.sheffield.ac.uk/pvlive/api/v4/pes/12`)
-  // const res = await fetch (`https://api.solar.sheffield.ac.uk/pvlive/api/v4/pes/10?start=2019-01-01T12:00:00&end=2019-02-02T12:40:59`)
   const res = await fetch (`https://api.solar.sheffield.ac.uk/pvlive/api/v4/pes/0?start=${startingDate}T${startingTime}&end=${EndDate}T${EndTime}`)
   return res.json()
 }

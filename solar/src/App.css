@@ -15,7 +15,7 @@
   /* flex-basis: 0.25%; */
 }
 .bar {
-  background-image: rgb(53,97,3);
+  background-color: rgb(53,97,3);
   /* background-color: blue; */
   border-radius: 10px 10px 0 0;
   width: 100%;
