@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 
 
 // STYLES
-import "../app.css"
+import "../App.css"
 
 
 
