@@ -36,9 +36,9 @@ export default function Graphs({
     <>
       <div>Choose a date range: </div>
       <div>
-        <span onClick={handleDisplay} className="cursor-pointer hover:text-white" style={(display === "last week")?({textDecoration: "underline"}): {textDecoration: "none"}}>last week</span> /{' '}
-        <span onClick={handleDisplay} className="cursor-pointer hover:text-white" style={(display === "last month")?({textDecoration: "underline"}): {textDecoration: "none"}}>last month</span> /{' '}
-        <span onClick={handleDisplay} className="cursor-pointer hover:text-white" style={(display === "last year")?({textDecoration: "underline"}): {textDecoration: "none"}}>last year</span>
+        <span onClick={handleDisplay} className={`cursor-pointer hover:text-white ${display==='last week' ? 'underline' : 'no-underline'}`}>last week</span> /{' '}
+        <span onClick={handleDisplay} className={`cursor-pointer hover:text-white ${display==='last month' ? 'underline' : 'no-underline'}`} >last month</span> /{' '}
+        <span onClick={handleDisplay} className={`cursor-pointer hover:text-white ${display==='last year' ? 'underline' : 'no-underline'}`} >last year</span>
       </div>
       {display === "last week" && (
         <WeeklyGraph
