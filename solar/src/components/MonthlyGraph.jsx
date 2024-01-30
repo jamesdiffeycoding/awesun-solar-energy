@@ -1,4 +1,5 @@
 "use client"
+import { useState } from "react"
 
 export default function MonthlyGraph({dayTimeSolarDataMonth, dayTimeSolarDataBarWidthMonth, highestSolarDataValueMonth}) {
     
@@ -9,9 +10,10 @@ export default function MonthlyGraph({dayTimeSolarDataMonth, dayTimeSolarDataBar
             <div>Highest production day: 
                 {highestSolarDataValueMonth}
             </div>
-  
+             {/* MONTH CONTAINER */}
             <div className="graph-container">
                 <div className="graph">
+                    
                     {dayTimeSolarDataMonth.reverse().map((dataPoint, index) => (dataPoint[1].includes("09:00:00")) ? (
                     <>
                     <div className="verticalstrip" key={index}>

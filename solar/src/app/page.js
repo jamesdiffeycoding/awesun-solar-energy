@@ -2,7 +2,7 @@
 import SolarData from "@/components/SolarData";
 import SolarTitle from "@/components/SolarTitle";
 import Graphs from "@/components/Graphs";
-
+import Sun from "@/components/Sun";
 // HELPER FUNCTIONS
 import {getEndDate, getEndTime, getEndDateAndTime, getStartingDate} from "@/app/getDates";
 
@@ -10,6 +10,7 @@ import {getEndDate, getEndTime, getEndDateAndTime, getStartingDate} from "@/app/
 let endTime = getEndTime()
 let startingTime = endTime
 let endDateAndTime = getEndDateAndTime()
+let startingDateDay = getStartingDate(0)
 let startingDateWeek = getStartingDate(7)
 let startingDateMonth = getStartingDate(31)
 let startingDateYear = getStartingDate(365)
@@ -27,8 +28,18 @@ async function getSolar(startingDate, startingTime, EndDate, EndTime) {
 
 export default async function Home() {
 
+
   // Helper
   const pattern = /^(\d{4}-\d{2}-\d{2}T(?:0[9]|1[0-6]):[0-5]\d:00Z)$/;
+  // Daily get solar data
+  const dataDay = getSolar(startingDateDay, "00:00:00", endDateAndTime, endTime)
+  const solarDataDay = await Promise.all([dataDay])
+  const solarDay = (solarDataDay[0].data)
+  console.log(solarDay)
+  const dayTimeSolarDataDay = solarDay.filter(solardata=> pattern.test(solardata[1])) 
+  const dayTimeSolarDataBarWidthDay = 99/(dayTimeSolarDataDay.length) //ensures that the bars fill 99% of the width of the graph
+  const highestSolarDataValueDay= Math.max(...dayTimeSolarDataDay.map(solardata=>solardata[2]))
+
   // Weekly get solar data
   const dataWeek = getSolar(startingDateWeek, startingTime, endDateAndTime, endTime)
   const solarDataWeek = await Promise.all([dataWeek])
@@ -36,6 +47,7 @@ export default async function Home() {
   const dayTimeSolarDataWeek = solarWeek.filter(solardata=> pattern.test(solardata[1])) 
   const dayTimeSolarDataBarWidthWeek = 99/(dayTimeSolarDataWeek.length) //ensures that the bars fill 99% of the width of the graph
   const highestSolarDataValueWeek= Math.max(...dayTimeSolarDataWeek.map(solardata=>solardata[2]))
+  const solarDaySun = getSolar(solardata=>solardata[1].data)
 
   
   // Monthly get solar data
@@ -57,6 +69,7 @@ export default async function Home() {
 
   return (<>
     <div className='background'>
+      <Sun energyProduced={solarDay} highestSolarDataValueDay={highestSolarDataValueDay} highestSolarDataValueWeek={highestSolarDataValueWeek}/>
       <div className='flex justify-between m-8'>
         <SolarTitle />
         <SolarData highestSolarDataValueWeek={highestSolarDataValueWeek} highestSolarDataValueMonth={highestSolarDataValueMonth} highestSolarDataValueYear={highestSolarDataValueYear}/>
