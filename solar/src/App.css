@@ -11,7 +11,7 @@
 
 }
 
-.section 2 {
+.section2 {
   font-size: small;
 }
 
@@ -44,6 +44,13 @@
   width: 1px;
   height: 100%;
 }
+
+.break2{
+  background-color: rgb(255, 255, 255);
+  width: 1px;
+  height: 100%;
+}
+
 .verticalstrip:hover {
   background-color: rgb(255, 182, 80) !important;
 }

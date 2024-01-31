@@ -12,7 +12,7 @@ export default function MonthlyGraph({dayTimeSolarDataMonth, dayTimeSolarDataBar
                     {dayTimeSolarDataMonth.reverse().map((dataPoint, index) => (dataPoint[1].includes("09:00:00")) ? (
                     <>
                     <div className="verticalstrip" key={index}>
-                        <div className="break"></div>
+                    <div className="break"></div>
                         </div>
                     <div className="verticalstrip" key={index} style={{ width: `${dayTimeSolarDataBarWidthMonth}%` }}>
                         <div className="bar" style={{ height:  `${98*dataPoint[2]/highestSolarDataValueMonth}%`  }}></div>

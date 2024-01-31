@@ -28,13 +28,13 @@ export default async function Home() {
 
 
   // Helper
-  const pattern = /^(\d{4}-\d{2}-\d{2}T(?:0[9]|1[0-6]):[0-5]\d:00Z)$/;
+  const patternNineToFive = /^(\d{4}-\d{2}-\d{2}T(?:0[9]|1[0-6]):[0-5]\d:00Z)$/;
   // Daily get solar data
   const dataDay = getSolar(startingDateDay, "00:00:00", endDateAndTime, endTime)
   const solarDataDay = await Promise.all([dataDay])
   const solarDay = (solarDataDay[0].data)
   console.log(solarDay)
-  const dayTimeSolarDataDay = solarDay.filter(solardata=> pattern.test(solardata[1])) 
+  const dayTimeSolarDataDay = solarDay.filter(solardata=> patternNineToFive.test(solardata[1])) 
   const dayTimeSolarDataBarWidthDay = 99/(dayTimeSolarDataDay.length) //ensures that the bars fill 99% of the width of the graph
   const highestSolarDataValueDay= Math.max(...dayTimeSolarDataDay.map(solardata=>solardata[2]))
 
@@ -42,7 +42,7 @@ export default async function Home() {
   const dataWeek = getSolar(startingDateWeek, startingTime, endDateAndTime, endTime)
   const solarDataWeek = await Promise.all([dataWeek])
   const solarWeek = (solarDataWeek[0].data)
-  const dayTimeSolarDataWeek = solarWeek.filter(solardata=> pattern.test(solardata[1])) 
+  const dayTimeSolarDataWeek = solarWeek.filter(solardata=> patternNineToFive.test(solardata[1])) 
   const dayTimeSolarDataBarWidthWeek = 99/(dayTimeSolarDataWeek.length) //ensures that the bars fill 99% of the width of the graph
   const highestSolarDataValueWeek= Math.max(...dayTimeSolarDataWeek.map(solardata=>solardata[2]))
   const solarDaySun = getSolar(solardata=>solardata[1].data)
@@ -52,16 +52,17 @@ export default async function Home() {
   const dataMonth = getSolar(startingDateMonth , startingTime, endDateAndTime, endTime)
   const solarDataMonth = await Promise.all([dataMonth])
   const solarMonth = (solarDataMonth[0].data)
-  const dayTimeSolarDataMonth = solarMonth.filter(solardata=> pattern.test(solardata[1])) 
+  const dayTimeSolarDataMonth = solarMonth.filter(solardata=> patternNineToFive.test(solardata[1])) 
   const dayTimeSolarDataBarWidthMonth = 99/(dayTimeSolarDataMonth.length) //ensures that the bars fill 99% of the width of the graph
   const highestSolarDataValueMonth= Math.max(...dayTimeSolarDataMonth.map(solardata=>solardata[2]))
 
 
   // Annual get solar data
+  const patternTwoPM = /^(\d{4}-\d{2}-\d{2}T14:00:00Z)$/;
   const dataYear = getSolar(startingDateYear , startingTime, endDateAndTime, endTime)
   const solarDataYear = await Promise.all([dataYear])
   const solarYear = (solarDataYear[0].data)
-  const dayTimeSolarDataYear = solarYear.filter(solardata=> pattern.test(solardata[1])) 
+  const dayTimeSolarDataYear = solarYear.filter(solardata=> patternTwoPM.test(solardata[1])) 
   const dayTimeSolarDataBarWidthYear = 99/(dayTimeSolarDataYear.length) //ensures that the bars fill 99% of the width of the graph
   const highestSolarDataValueYear= Math.max(...dayTimeSolarDataYear.map(solardata=>solardata[2]))
 
