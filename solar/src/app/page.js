@@ -45,7 +45,7 @@ export default async function Home() {
   const dayTimeSolarDataWeek = solarWeek.filter(solardata=> patternNineToFive.test(solardata[1])) 
   const dayTimeSolarDataBarWidthWeek = 99/(dayTimeSolarDataWeek.length) //ensures that the bars fill 99% of the width of the graph
   const highestSolarDataValueWeek= Math.max(...dayTimeSolarDataWeek.map(solardata=>solardata[2]))
-  const solarDaySun = getSolar(solardata=>solardata[1].data)
+  
 
   
   // Monthly get solar data
