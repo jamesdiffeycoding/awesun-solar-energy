@@ -5,11 +5,6 @@ export default function MonthlyGraph({dayTimeSolarDataMonth, dayTimeSolarDataBar
     
     return(
         <div className="monthly-graph">
-            <h2>Monthly Data</h2>
-            <p>Data from last 30 days from 9-430pm</p>
-            <div>Highest production day: 
-                {highestSolarDataValueMonth}
-            </div>
              {/* MONTH CONTAINER */}
             <div className="graph-container">
                 <div className="graph">
@@ -29,6 +24,8 @@ export default function MonthlyGraph({dayTimeSolarDataMonth, dayTimeSolarDataBar
                     </div>
                     ))}
                 </div>
+                <div className="graph-base"></div>
+
             </div>
         </div>
     )

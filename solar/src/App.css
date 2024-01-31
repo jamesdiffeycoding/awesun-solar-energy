@@ -1,17 +1,34 @@
+.background {
+  height: 99vh;
+  width: 99vw;
+  margin: 0;
+  background-image: linear-gradient(-179deg,rgb(0,90,107) 0px,rgb(0,135,160) 26%,rgb(51,195,221) 57%,rgb(153,225,238) 100%)
+
+}
+
+.section1 {
+  padding: 2rem;
+
+}
+
+.section 2 {
+  font-size: small;
+}
+
 .graph {
   background-color: transparent;
   display: flex;
   justify-content: center;
   flex-wrap: nowrap;
-  width: 99vw;
-  height: 20vh;
-  min-height: 500px;
+  width: 100%;
+  height: 30vh;
+  margin-top: 10rem;
+  min-height: 100px;
 }
 .verticalstrip {
   display: flex;
   height: 100%;
   align-items: flex-end;
-  background-color: lightblue;
   /* flex-basis: 0.25%; */
 }
 .bar {
@@ -30,30 +47,13 @@
 .verticalstrip:hover {
   background-color: rgb(255, 182, 80) !important;
 }
-.small {
-  height: 3rem;
-}
-.med {
-  height: 6rem;
-}
-.tall {
-  height: 9rem
-}
-/* POPUP */
-.popup-data{
-  color: rgb(0, 0, 0);
-  background-color: rgb(93, 133, 255);
-  padding: 1rem;
-  /* display: none; */
-}
-.verticalstrip:hover .popup-container {
-  display: block;
-}
 
-.bottom-banner {
-    width: 100vw; /* This will cause the item to take up the entire width and wrap onto the next line */
-    background-color: rgb(255, 255, 255);
+
+.graph-base {
+    width: 100%; /* This will cause the item to take up the entire width and wrap onto the next line */
+    background-color: rgb(53,97,3);
     color: black;
+    height: 1rem;
 
 }
 
@@ -62,10 +62,4 @@
   font-weight: 500;
 }
 
-
-.background {
-  height: 100vh;
-  background-image: linear-gradient(-179deg,rgb(0,90,107) 0px,rgb(0,135,160) 26%,rgb(51,195,221) 57%,rgb(153,225,238) 100%)
-
-}
 

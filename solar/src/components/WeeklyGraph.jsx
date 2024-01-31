@@ -6,11 +6,6 @@ export default function WeeklyGraph({dayTimeSolarDataWeek, dayTimeSolarDataBarWi
     return(
         <div className="weekly-graph">
         {/* WEEK CONTAINER */}
-            <h2>Weekly Data</h2>
-            <p>Data from last 7 days from 9-430pm</p>
-            <div>Highest production day: 
-            {highestSolarDataValueWeek}
-            </div>
     
             <div className="graph-container">
             <div className="graph">
@@ -30,7 +25,7 @@ export default function WeeklyGraph({dayTimeSolarDataWeek, dayTimeSolarDataBarWi
                 </div>
                 ))}
             </div>
-                <div className="bottom-banner">We can code this in different ways. For now here's a bottom banner like on the winderful site</div>
+                <div className="graph-base"></div>
             </div>
         </div>        
     )

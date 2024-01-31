@@ -2,15 +2,9 @@
 import { useState } from "react"
 
 export default function YearlyGraph({dayTimeSolarDataYear, dayTimeSolarDataBarWidthYear, highestSolarDataValueYear}){
-    return(
+  return(
         <div>
-            {/* YEAR CONTAINER  */}
-        <h2>Yearly Data</h2>
-        <p>Data from last 30 days from 9-430pm</p>
-        <div>Highest production day: 
-          {highestSolarDataValueYear}
-        </div>
-  
+            {/* YEAR CONTAINER  */}  
         <div className="graph-container">
           <div className="graph">
             {dayTimeSolarDataYear.reverse().map((dataPoint, index) => (dataPoint[1].includes("09:00:00")) ? (
@@ -28,6 +22,8 @@ export default function YearlyGraph({dayTimeSolarDataYear, dayTimeSolarDataBarWi
               </div>
             ))}
           </div>
+          <div className="graph-base"></div>
+
         </div>
 
         </div>
