@@ -33,7 +33,7 @@ export default async function Home() {
   const dataDay = getSolar(startingDateDay, "00:00:00", endDateAndTime, endTime)
   const solarDataDay = await Promise.all([dataDay])
   const solarDay = (solarDataDay[0].data)
-  console.log(solarDay)
+  console.log("solarDay",solarDay)
   const dayTimeSolarDataDay = solarDay.filter(solardata=> patternNineToFive.test(solardata[1])) 
   const dayTimeSolarDataBarWidthDay = 99/(dayTimeSolarDataDay.length) //ensures that the bars fill 99% of the width of the graph
   const highestSolarDataValueDay= Math.max(...dayTimeSolarDataDay.map(solardata=>solardata[2]))
