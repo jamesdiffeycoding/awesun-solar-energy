@@ -10,7 +10,8 @@ export default function YearlyGraph({dayTimeSolarDataYear, dayTimeSolarDataBarWi
             {dayTimeSolarDataYear.reverse().map((dataPoint, index) => (dataPoint[1].includes("09:00:00")) ? (
               <>
               <div className="verticalstrip" key={index}>
-                <div className="break"></div>
+              {(dataPoint[1].includes("09:00:00") && dataPoint[1].includes("01T")) && 
+                 <div className="break2"></div> } 
               </div>
               <div className="verticalstrip" key={index} style={{ width: `${dayTimeSolarDataBarWidthYear}%` }}>
               <div className="bar" style={{ height:  `${98*dataPoint[2]/highestSolarDataValueYear}%`  }}></div>

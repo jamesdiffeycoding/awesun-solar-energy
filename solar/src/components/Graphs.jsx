@@ -28,9 +28,6 @@ export default function Graphs({
     setDisplay(event.target.textContent);
   };
 
-  useEffect(() => {
-    console.log(display);
-  }, [display]);
 
   return (
     <>
