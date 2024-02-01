@@ -3,22 +3,17 @@
 }
 
 .background {
-  height: 99vh;
-  width: 99vw;
+  height: 100vh;
+  width: 100vw;
   margin: 0;
   background-image: linear-gradient(-179deg,rgb(0,90,107) 0px,rgb(0,135,160) 26%,rgb(51,195,221) 57%,rgb(153,225,238) 100%)
 
 }
 
-.section1 {
-  padding: 2rem;
-
+.graph-selector{
+  font-size: large;
+  padding-left: 2rem;
 }
-
-.section2 {
-  font-size: small;
-}
-
 .graph {
   background-color: transparent;
   display: flex;
@@ -26,7 +21,8 @@
   flex-wrap: nowrap;
   width: 100%;
   height: 30vh;
-  margin-top: 10rem;
+  position:absolute;
+  bottom: 1rem;
   min-height: 100px;
 }
 .verticalstrip {
@@ -65,7 +61,9 @@
     background-color: rgb(53,97,3);
     color: black;
     height: 1rem;
-
+    position:fixed;
+    bottom: 0rem;
+    
 }
 
 

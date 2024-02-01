@@ -67,17 +67,15 @@ export default async function Home() {
   const highestSolarDataValueYear= Math.max(...dayTimeSolarDataYear.map(solardata=>solardata[2]))
 
   return (<>
-    <div className='background flex-col justify-between align-between'>
+    <div className='background flex-col justify-between align-between text-lg'>
     {/* TOP HALF OF PAGE */}
-      <section className='flex justify-between section1'>
+      <div className='flex justify-between p-8'>
         <SolarTitle />
         <Sun energyProduced={solarDay} highestSolarDataValueDay={highestSolarDataValueDay} highestSolarDataValueWeek={highestSolarDataValueWeek}/>
         <SolarData highestSolarDataValueWeek={highestSolarDataValueWeek} highestSolarDataValueMonth={highestSolarDataValueMonth} highestSolarDataValueYear={highestSolarDataValueYear}/>
-      </section>
+      </div>
     {/* BOTTOM HALF OF pageBreakAfter:  */}
-      <section className="section2">
-        <Graphs dayTimeSolarDataWeek={dayTimeSolarDataWeek} dayTimeSolarDataBarWidthWeek={dayTimeSolarDataBarWidthWeek} highestSolarDataValueWeek={highestSolarDataValueWeek} dayTimeSolarDataMonth={dayTimeSolarDataMonth} dayTimeSolarDataBarWidthMonth={dayTimeSolarDataBarWidthMonth} highestSolarDataValueMonth={highestSolarDataValueMonth} dayTimeSolarDataYear={dayTimeSolarDataYear} dayTimeSolarDataBarWidthYear={dayTimeSolarDataBarWidthYear} highestSolarDataValueYear={highestSolarDataValueYear} />
-      </section>
+        <Graphs dayTimeSolarDataWeek={dayTimeSolarDataWeek} dayTimeSolarDataBarWidthWeek={dayTimeSolarDataBarWidthWeek} highestSolarDataValueWeek={highestSolarDataValueWeek} dayTimeSolarDataMonth={dayTimeSolarDataMonth} dayTimeSolarDataBarWidthMonth={dayTimeSolarDataBarWidthMonth} highestSolarDataValueMonth={highestSolarDataValueMonth} dayTimeSolarDataYear={dayTimeSolarDataYear} dayTimeSolarDataBarWidthYear={dayTimeSolarDataBarWidthYear} highestSolarDataValueYear={highestSolarDataValueYear} dayDate={dataDay} />
     </div> 
   </>
   )
