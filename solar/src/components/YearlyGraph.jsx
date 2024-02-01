@@ -10,7 +10,7 @@ export default function YearlyGraph({dayTimeSolarDataYear, dayTimeSolarDataBarWi
         <div className="graph" key="graph2">
           {dayTimeSolarDataYear.reverse().map((dataPoint, index) => (
             (
-              <React.Fragment key={`${index}-frag`} className="fixed" >
+              <React.Fragment key={`${index}-frag`} >
                 <div className="verticalstrip" key={index}>
                   {dataPoint[1].includes("01T") && <div className="break2" key={`${index}-break`}></div>}
                 </div>
