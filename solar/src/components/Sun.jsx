@@ -8,8 +8,11 @@ const Sun = ({ energyProduced, highestSolarDataValueDay, highestSolarDataValueWe
 		const updateSunSize = () => {
 			// Assuming that energyProduced is an array and you want to use the first value as an example
 			const currentEnergy =
-				energyProduced.length > 0 ? energyProduced[1][3] : 0;
+				energyProduced.length > 0 ? energyProduced[1][2] : 0;
+				console.log("energy", energyProduced[1][2])
             console.log(currentEnergy)
+			console.log("day",highestSolarDataValueDay)
+			console.log("week", highestSolarDataValueWeek)
 			// Adjust the sun size based on the amount of energy produced
 			const newSize = (highestSolarDataValueDay / highestSolarDataValueWeek) * 700; // Adjust the multiplier as needed
 			setSunSize(newSize);
