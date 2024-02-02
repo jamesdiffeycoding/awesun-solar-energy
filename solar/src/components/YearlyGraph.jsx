@@ -4,9 +4,9 @@ import React from "react";
 
 export default function YearlyGraph({dayTimeSolarDataYear, dayTimeSolarDataBarWidthYear, highestSolarDataValueYear}){
   return (
-    <div>
+    <>
       {/* YEAR CONTAINER  */}
-      <div className="graph-container">
+      <section className="fixed bottom-0 w-full">
         <div className="graph" key="graph2">
           {dayTimeSolarDataYear.reverse().map((dataPoint, index) => (
             (
@@ -15,15 +15,15 @@ export default function YearlyGraph({dayTimeSolarDataYear, dayTimeSolarDataBarWi
                   {dataPoint[1].includes("01T") && <div className="break2" key={`${index}-break`}></div>}
                 </div>
                 <div className="verticalstrip" key={`${index}-2`} style={{ width: `${dayTimeSolarDataBarWidthYear}%` }}>
-                  <div className="bar" key={`${index}-bar-2`} style={{ height: `${98 * dataPoint[2] / highestSolarDataValueYear}%` }}></div>
+                  <div className="w-full bg-green-800 rounded-t-lg bg-gradient-to-b from-green-800 to-green-600" key={`${index}-bar-2`} style={{ height: `${98 * dataPoint[2] / highestSolarDataValueYear}%` }}></div>
                 </div>
               </React.Fragment>
             ) 
           ))}
         </div>
-        <div className="graph-base" key="base"></div>
-      </div>
-    </div>
+        <div className="w-full h-4 bg-green-800  bg-green-700 w-full bg-gradient-to-b from-green-600 to-green-500" key="base"></div>
+      </section>
+    </>
   );
   
 }

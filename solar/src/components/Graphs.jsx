@@ -26,56 +26,62 @@ export default function Graphs({
 
 	return (
 		<>
-			<div className="graph-selector">
-				<div>Choose a date range: </div>
-				<span
-					onClick={handleDisplay}
-					className={`cursor-pointer hover:text-slate-900 ${
-						display === "last week" ? "underline" : "no-underline"
-					}`}
-				>
-					last week
-				</span>{" "}
-				/{" "}
-				<span
-					onClick={handleDisplay}
-					className={`cursor-pointer hover:text-slate-900 ${
-						display === "last month" ? "underline" : "no-underline"
-					}`}
-				>
-					last month
-				</span>{" "}
-				/{" "}
-				<span
-					onClick={handleDisplay}
-					className={`cursor-pointer hover:text-slate-900 ${
-						display === "last year" ? "underline" : "no-underline"
-					}`}
-				>
-					last year
-				</span>
-			</div>
-			{display === "last week" && (
-				<WeeklyGraph
-					dayTimeSolarDataWeek={dayTimeSolarDataWeek}
-					dayTimeSolarDataBarWidthWeek={dayTimeSolarDataBarWidthWeek}
-					highestSolarDataValueWeek={highestSolarDataValueWeek}
-				/>
-			)}
-			{display === "last month" && (
-				<MonthlyGraph
-					dayTimeSolarDataMonth={dayTimeSolarDataMonth}
-					dayTimeSolarDataBarWidthMonth={dayTimeSolarDataBarWidthMonth}
-					highestSolarDataValueMonth={highestSolarDataValueMonth}
-				/>
-			)}
-			{display === "last year" && (
-				<YearlyGraph
-					dayTimeSolarDataYear={dayTimeSolarDataYear}
-					dayTimeSolarDataBarWidthYear={dayTimeSolarDataBarWidthYear}
-					highestSolarDataValueYear={highestSolarDataValueYear}
-				/>
-			)}
+			{/* FULL COMPONENT SECTION CONTAINER */}
+			<section className="">
+				{/* GRAPH SELECTOR */}
+				<div className="graph-selector">
+					<div>Choose a date range: </div>
+					<span
+						onClick={handleDisplay}
+						className={`cursor-pointer hover:text-slate-900 ${
+							display === "last week" ? "underline" : "no-underline"
+						}`}
+					>
+						last week
+					</span>{" "}
+					/{" "}
+					<span
+						onClick={handleDisplay}
+						className={`cursor-pointer hover:text-slate-900 ${
+							display === "last month" ? "underline" : "no-underline"
+						}`}
+					>
+						last month
+					</span>{" "}
+					/{" "}
+					<span
+						onClick={handleDisplay}
+						className={`cursor-pointer hover:text-slate-900 ${
+							display === "last year" ? "underline" : "no-underline"
+						}`}
+					>
+						last year
+					</span>
+				</div>
+				{/* GRAPH DISPLAY */}
+
+				{display === "last week" && (
+					<WeeklyGraph
+						dayTimeSolarDataWeek={dayTimeSolarDataWeek}
+						dayTimeSolarDataBarWidthWeek={dayTimeSolarDataBarWidthWeek}
+						highestSolarDataValueWeek={highestSolarDataValueWeek}
+					/>
+				)}
+				{display === "last month" && (
+					<MonthlyGraph
+						dayTimeSolarDataMonth={dayTimeSolarDataMonth}
+						dayTimeSolarDataBarWidthMonth={dayTimeSolarDataBarWidthMonth}
+						highestSolarDataValueMonth={highestSolarDataValueMonth}
+					/>
+				)}
+				{display === "last year" && (
+					<YearlyGraph
+						dayTimeSolarDataYear={dayTimeSolarDataYear}
+						dayTimeSolarDataBarWidthYear={dayTimeSolarDataBarWidthYear}
+						highestSolarDataValueYear={highestSolarDataValueYear}
+					/>
+				)}
+			</section>
 		</>
 	);
 }

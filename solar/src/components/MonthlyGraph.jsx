@@ -5,29 +5,28 @@ import React from "react"
 export default function MonthlyGraph({dayTimeSolarDataMonth, dayTimeSolarDataBarWidthMonth, highestSolarDataValueMonth}) {
     
     return(
-        <div className="monthly-graph">
-             {/* MONTH CONTAINER */}
-            <div className="graph-container">
-                <div className="graph">
-                    
-                    {dayTimeSolarDataMonth.reverse().map((dataPoint, index) => (dataPoint[1].includes("09:00:00")) ? (
-                    <React.Fragment key={`${index}-frag`}>
-                    <div className="verticalstrip" key={index}>
-                    <div className="break" key={`${index}-break`}></div>
-                        </div>
-                    <div className="verticalstrip" key={`${index}-strip`} style={{ width: `${dayTimeSolarDataBarWidthMonth}%` }}>
-                        <div className="bar" key={`${index}-bar`} style={{ height:  `${98*dataPoint[2]/highestSolarDataValueMonth}%`  }}></div>
+        <>
+        {/* MONTH CONTAINER */}
+        <section className="fixed bottom-0 w-full">
+            <div className="graph" key="graph">
+                {dayTimeSolarDataMonth.reverse().map((dataPoint, index) => (dataPoint[1].includes("09:00:00")) ? (
+                <React.Fragment key={`${index}-frag`}>
+                <div className="verticalstrip" key={index}>
+                <div className="break" key={`${index}-break`}></div>
                     </div>
-                    </React.Fragment>
-                    ) : (
-                    <div className="verticalstrip" key={`${index}-2`} style={{ width: `${dayTimeSolarDataBarWidthMonth}%` }}>
-                        <div className="bar" key={`${index}-bar-2`} style={{ height:  `${98*dataPoint[2]/highestSolarDataValueMonth}%`  }}></div>
-                    </div>
-                    ))}
+                <div className="verticalstrip" key={`${index}-strip`} style={{ width: `${dayTimeSolarDataBarWidthMonth}%` }}>
+                    <div className="w-full bg-green-800 rounded-t-lg bg-gradient-to-b from-green-800 to-green-600" key={`${index}-bar`} style={{ height:  `${98*dataPoint[2]/highestSolarDataValueMonth}%`  }}></div>
                 </div>
-                <div className="graph-base" key="base"></div>
-
+                </React.Fragment>
+                ) : (
+                <div className="verticalstrip" key={`${index}-2`} style={{ width: `${dayTimeSolarDataBarWidthMonth}%` }}>
+                    <div className="w-full bg-green-800 rounded-t-lg bg-gradient-to-b from-green-800 to-green-600" key={`${index}-bar-2`} style={{ height:  `${98*dataPoint[2]/highestSolarDataValueMonth}%`  }}></div>
+                </div>
+                ))}
             </div>
-        </div>
+            {/* BASE OF GRAPH */}
+            <div className="w-full h-4 bg-green-800  bg-green-700 w-full bg-gradient-to-b from-green-600 to-green-500" key="base"></div>
+        </section>
+        </>
     )
 }
