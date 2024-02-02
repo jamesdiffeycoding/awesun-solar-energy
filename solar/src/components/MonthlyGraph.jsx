@@ -25,7 +25,7 @@ export default function MonthlyGraph({daytimeDataMonth, daytimeDataBarWidthMonth
                 ))}
             </div>
             {/* BASE OF GRAPH */}
-            <div className="w-full h-4 bg-green-800  bg-green-700 w-full bg-gradient-to-b from-green-600 to-green-500" key="base"></div>
+            <div className="w-full h-4 bg-green-700 bg-gradient-to-b from-green-600 to-green-500" key="base"></div>
         </section>
         </>
     )
