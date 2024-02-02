@@ -43,19 +43,19 @@ export default function Graphs({
 					<span
 						onClick={handleDisplay}
 						className={`cursor-pointer hover:text-slate-900 ${
-							display === "last month" ? "underline" : "no-underline"
+							display === "month" ? "underline" : "no-underline"
 						}`}
 					>
-						last month
+						month
 					</span>{" "}
 					/{" "}
 					<span
 						onClick={handleDisplay}
 						className={`cursor-pointer hover:text-slate-900 ${
-							display === "last year" ? "underline" : "no-underline"
+							display === "year" ? "underline" : "no-underline"
 						}`}
 					>
-						last year
+						year
 					</span>
 				</div>
 				{/* GRAPH DISPLAY */}
@@ -67,14 +67,14 @@ export default function Graphs({
 						peakMWWeek={peakMWWeek}
 					/>
 				)}
-				{display === "last month" && (
+				{display === "month" && (
 					<MonthlyGraph
 						daytimeDataMonth={daytimeDataMonth}
 						daytimeDataBarWidthMonth={daytimeDataBarWidthMonth}
 						peakMWMonth={peakMWMonth}
 					/>
 				)}
-				{display === "last year" && (
+				{display === "year" && (
 					<YearlyGraph
 						daytimeDataYear={daytimeDataYear}
 						daytimeDataBarWidthYear={daytimeDataBarWidthYear}
