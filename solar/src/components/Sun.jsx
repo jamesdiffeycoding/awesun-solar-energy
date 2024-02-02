@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const Sun = ({ energyProduced, peakMWDay, peakMWWeek }) => {
 	const [sunSize, setSunSize] = useState(10); // default size
-	let windowSize = window.innerWidth
+	let windowSize = 1000
 	console.log(windowSize)
 	const [widthOfScreenWhenLoaded, setwidthOfScreenWhenLoaded] = useState(windowSize);
 	useEffect(() => {
