@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 
 const Sun = ({ energyProduced, peakMWDay, peakMWWeek }) => {
 	const [sunSize, setSunSize] = useState(10); // default size
-	let windowSize = 1000
-	console.log(windowSize)
-	const [widthOfScreenWhenLoaded, setwidthOfScreenWhenLoaded] = useState(windowSize);
+	// let windowSize =  1000
+	// console.log(windowSize)
+	// const [widthOfScreenWhenLoaded, setwidthOfScreenWhenLoaded] = useState(windowSize);
 	useEffect(() => {
 		const updateSunSize = () => {
 			// Assuming that energyProduced is an array and you want to use the first value as an example
@@ -16,29 +16,54 @@ const Sun = ({ energyProduced, peakMWDay, peakMWWeek }) => {
             console.log(currentEnergy)
 			console.log("day",peakMWDay)
 			console.log("week", peakMWWeek)
-			const widthOfScreenWhenLoaded = window.innerWidth; 
-			const newSize = (peakMWDay / peakMWWeek) * 0.7 * widthOfScreenWhenLoaded; // Adjust the multiplier as needed
+			// const widthOfScreenWhenLoaded = window.innerWidth; 
+			// const newSize = (peakMWDay / peakMWWeek) * 0.7 * widthOfScreenWhenLoaded; // Adjust the multiplier as needed
+			const newSize = (peakMWDay / peakMWWeek) * 200 
 			setSunSize(newSize);
-			setwidthOfScreenWhenLoaded(windowSize);
+			console.log(sunSize)
+			// setwidthOfScreenWhenLoaded(windowSize);
 		};
 
 		// Update sun size whenever energyProduced changes
 		updateSunSize();
-	}, [energyProduced, widthOfScreenWhenLoaded]);
+	}, [energyProduced, sunSize]);
 
 
 	return (
-		<div class="sun"
-			style={{
-				transition: 'width 0.5s ease-in-out, height 0.5s ease-in-out',
-				width: `${sunSize}px`,
-				height: `${sunSize}px`,
-				backgroundColor: "yellow",
-				borderRadius: "50%",
-				justifyContent: "center",
-			}}
+		<div
+		  className={`sun w-12 sm:w-20 md:w-128 lg:w-300 xl:w-500 2xl:w-800 
+					  h-12 sm:h-20 md:h-128 lg:h-300 xl:h-500 2xl:h-800 
+					  transition-width duration-500 ease-in-out 
+					  transition-height duration-500 ease-in-out 
+					  bg-yellow-400 rounded-full flex items-center justify-center animate-shine`}
+		  style={{
+			width: `${sunSize}px`,
+			height: `${sunSize}px`,
+		  }}
 		/>
-	);
-};
+	  );
+	};
+
+	// return (
+		// div 1
+		// <div className = {`sun 2xl:w-${1536 * newSunSize} 2xl:h-${1536 * newSunSize} xl:w-${1280 * newSunSize} xl:h-${1280 * newSunSize} lg:w-${1024 * newSunSize} lg:h-${1024 * newSunSize} md:w-${768 * newSunSize} md:h-${768 * newSunSize} sm:w-${500 * newSunSize} sm:h-${500 * newSunSize} transition-all duration-500 ease-in-out bg-yellow-400 rounded-full flex items-center justify-center animate-shine`}
+		//div 2
+		// <div className = {`sun w-500 h-500 transition-all duration-500 ease-in-out bg-yellow-400 rounded-full flex items-center justify-center animate-shine`} />
+		//div 3
+		// <div className="sun"
+		// 	style={{
+		// 		transition: 'width 0.5s ease-in-out, height 0.5s ease-in-out',
+		// 		width: `${sunSize}px`,
+		// 		height: `${sunSize}px`,
+		// 		backgroundColor: "yellow",
+		// 		borderRadius: "50%",
+		// 		justifyContent: "center",
+		// 	}}
+		// />
+		// div4
+		
+
+	// );
+// };
 
 export default Sun;
