@@ -26,7 +26,7 @@ const Sun = ({ energyProduced, peakMWDay, peakMWWeek }) => {
 
 		// Update sun size whenever energyProduced changes
 		updateSunSize();
-	}, [energyProduced, sunSize]);
+	}, [energyProduced]);
 
 
 	return (
@@ -44,26 +44,6 @@ const Sun = ({ energyProduced, peakMWDay, peakMWWeek }) => {
 	  );
 	};
 
-	// return (
-		// div 1
-		// <div className = {`sun 2xl:w-${1536 * newSunSize} 2xl:h-${1536 * newSunSize} xl:w-${1280 * newSunSize} xl:h-${1280 * newSunSize} lg:w-${1024 * newSunSize} lg:h-${1024 * newSunSize} md:w-${768 * newSunSize} md:h-${768 * newSunSize} sm:w-${500 * newSunSize} sm:h-${500 * newSunSize} transition-all duration-500 ease-in-out bg-yellow-400 rounded-full flex items-center justify-center animate-shine`}
-		//div 2
-		// <div className = {`sun w-500 h-500 transition-all duration-500 ease-in-out bg-yellow-400 rounded-full flex items-center justify-center animate-shine`} />
-		//div 3
-		// <div className="sun"
-		// 	style={{
-		// 		transition: 'width 0.5s ease-in-out, height 0.5s ease-in-out',
-		// 		width: `${sunSize}px`,
-		// 		height: `${sunSize}px`,
-		// 		backgroundColor: "yellow",
-		// 		borderRadius: "50%",
-		// 		justifyContent: "center",
-		// 	}}
-		// />
-		// div4
-		
-
-	// );
-// };
+	
 
 export default Sun;
