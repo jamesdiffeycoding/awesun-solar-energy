@@ -48,3 +48,16 @@
 .verticalstrip:hover {
   background-color: rgb(255, 182, 80) !important;
 }
+
+.sun {
+  animation: shine 4s ease-in-out infinite;
+}
+
+@keyframes shine {
+  50% {
+    box-shadow: 0 0 20px rgb(255, 220, 114), 
+    0 0 50px rgb(255, 220, 114),
+     0 0 80px rgb(255, 220, 114), 
+     0 0 120px rgb(255, 220, 114);
+  }
+}

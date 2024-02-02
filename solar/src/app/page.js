@@ -71,12 +71,13 @@ export default async function Home() {
     {/* TOP HALF OF PAGE */}
       <div className='flex justify-between p-8'>
         <SolarTitle />
-        <Sun energyProduced={solarDay} peakMWDay={peakMWDay} peakMWWeek={peakMWWeek}/>
-        <SolarData peakMWWeek={peakMWWeek} peakMWWeekDayAndTime={peakMWWeekDayAndTime} peakMWMonth={peakMWMonth}  peakMWMonthDayAndTime={peakMWMonthDayAndTime} 
+        <SolarData peakMWWeek={peakMWWeek} peakMWWeekDayAndTime={peakMWWeekDayAndTime} peakMWMonth={peakMWMonth} peakMWMonthDayAndTime={peakMWMonthDayAndTime} 
         peakMWYear={peakMWYear} peakMWYearDayAndTime={peakMWYearDayAndTime}/>
       </div>
+      <div className="fixed left-1/2 top-1/3  transform -translate-x-1/2 -translate-y-1/2">
+        <Sun energyProduced={solarDay} peakMWDay={peakMWDay} peakMWWeek={peakMWWeek}/>
+      </div>
       <Graphs daytimeDataWeek={daytimeDataWeek} daytimeDataBarWidthWeek={daytimeDataBarWidthWeek} peakMWWeek={peakMWWeek} daytimeDataMonth={daytimeDataMonth} daytimeDataBarWidthMonth={daytimeDataBarWidthMonth} peakMWMonth={peakMWMonth} daytimeDataYear={daytimeDataYear} daytimeDataBarWidthYear={daytimeDataBarWidthYear} peakMWYear={peakMWYear} dayDate={dataDay} />
-
     </div> 
   </>
   )

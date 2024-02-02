@@ -17,8 +17,8 @@ export default function SolarData({peakMWWeek, peakMWMonth, peakMWYear, peakMWMo
                 <hr className="pt-1 pb-1" style={{borderTop: 'dotted 1.5px'}} /> 
                 <div className="text-xs">
                     <div className="pt-1">Over the last year, domestic </div>
-                    <div className="pt-1">provided solar provided <span className="text-yellow-300">4.5%</span></div> {/* This is hard coded for now until we find a good energy demand API. */}
-                    <div className="pt-1">of the UK's electricity demand.</div>
+                    <div className="pt-1">solar provided <span className="text-yellow-300">4.5%</span></div> {/* This is hard coded for now until we find a good energy demand API. */}
+                    <div className="pt-1">of electricity demand.</div>
                 </div>
             </div>
     </div>            
