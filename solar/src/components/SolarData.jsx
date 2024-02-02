@@ -3,17 +3,17 @@
 
 
 
-export default function SolarData({peakSolarScoreWeek, peakSolarScoreMonth, peakSolarScoreYear, peakSolarScoreMonthDayAndTime, peakSolarScoreYearDayAndTime, peakSolarScoreWeekDayAndTime}) {
+export default function SolarData({peakMWWeek, peakMWMonth, peakMWYear, peakMWMonthDayAndTime, peakMWYearDayAndTime, peakMWWeekDayAndTime}) {
     return (
         <div className="text-right">
             <div>
                 <div className="pt-1 pb-1 underline underline-offset-8">Half-hourly MW production peaks</div>
-                <div className="pt-1"><span className="text-yellow-300">{peakSolarScoreWeek.toFixed(0)}</span> in the last week.</div>
-                <div className="supersmalltext text-slate-900">{peakSolarScoreWeekDayAndTime}</div>
-                <div className="pt-1"><span className="text-yellow-300">{peakSolarScoreWeek.toFixed(0)}</span> in the last month.</div>
-                <div className="supersmalltext text-slate-900">{peakSolarScoreWeekDayAndTime}</div>
-                <div className="pt-1"><span className="text-yellow-300">{peakSolarScoreYear.toFixed(0)}</span> in the last year.</div>
-                <div className="supersmalltext text-slate-900">{peakSolarScoreYearDayAndTime}</div>
+                <div className="pt-1"><span className="text-yellow-300">{peakMWWeek.toFixed(0)}</span> in the last week.</div>
+                <div className="supersmalltext text-slate-900">{peakMWWeekDayAndTime}</div>
+                <div className="pt-1"><span className="text-yellow-300">{peakMWWeek.toFixed(0)}</span> in the last month.</div>
+                <div className="supersmalltext text-slate-900">{peakMWWeekDayAndTime}</div>
+                <div className="pt-1"><span className="text-yellow-300">{peakMWYear.toFixed(0)}</span> in the last year.</div>
+                <div className="supersmalltext text-slate-900">{peakMWYearDayAndTime}</div>
                 <hr className="pt-1 pb-1" style={{borderTop: 'dotted 1.5px'}} /> 
                 <div className="text-xs">
                     <div className="pt-1">Over the last year, domestic </div>

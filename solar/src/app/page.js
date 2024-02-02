@@ -34,48 +34,48 @@ export default async function Home() {
   const dataDay = getSolar(startingDateDay, "00:00:00", endDateAndTime, endTime)
   const solarDataDay = await Promise.all([dataDay])
   const solarDay = (solarDataDay[0].data)
-  const dayTimeSolarDataDay = solarDay.filter(solardata=> patternNineToFive.test(solardata[1])) 
-  const dayTimeSolarDataBarWidthDay = 100/(dayTimeSolarDataDay.length) //ensures that the bars fill 99% of the width of the graph
-  const peakSolarScoreDay= Math.max(...dayTimeSolarDataDay.map(solardata=>solardata[2]))
+  const daytimeDataDay = solarDay.filter(solardata=> patternNineToFive.test(solardata[1])) 
+  const daytimeDataBarWidthDay = 100/(daytimeDataDay.length) //ensures that the bars fill 99% of the width of the graph
+  const peakMWDay= Math.max(...daytimeDataDay.map(solardata=>solardata[2]))
 
   // Weekly get solar data
   const dataWeek = getSolar(startingDateWeek, startingTime, endDateAndTime, endTime)
   const solarDataWeek = await Promise.all([dataWeek])
   const solarWeek = (solarDataWeek[0].data)
-  const dayTimeSolarDataWeek = solarWeek.filter(solardata=> patternNineToFive.test(solardata[1])) 
-  const dayTimeSolarDataBarWidthWeek = 100/(dayTimeSolarDataWeek.length) //ensures that the bars fill 99% of the width of the graph
-  const peakSolarScoreWeek= Math.max(...dayTimeSolarDataWeek.map(solardata=>solardata[2]))
-  const peakSolarScoreWeekDayAndTime= formatDateForSolarData(dayTimeSolarDataWeek.find(solardata=>solardata[2]===peakSolarScoreWeek)[1])
+  const daytimeDataWeek = solarWeek.filter(solardata=> patternNineToFive.test(solardata[1])) 
+  const daytimeDataBarWidthWeek = 100/(daytimeDataWeek.length) //ensures that the bars fill 99% of the width of the graph
+  const peakMWWeek= Math.max(...daytimeDataWeek.map(solardata=>solardata[2]))
+  const peakMWWeekDayAndTime= formatDateForSolarData(daytimeDataWeek.find(solardata=>solardata[2]===peakMWWeek)[1])
 
   // Monthly get solar data
   const dataMonth = getSolar(startingDateMonth , startingTime, endDateAndTime, endTime)
   const solarDataMonth = await Promise.all([dataMonth])
   const solarMonth = (solarDataMonth[0].data)
-  const dayTimeSolarDataMonth = solarMonth.filter(solardata=> patternNineToFive.test(solardata[1])) 
-  const dayTimeSolarDataBarWidthMonth = 100/(dayTimeSolarDataMonth.length) //ensures that the bars fill 99% of the width of the graph
-  const peakSolarScoreMonth= Math.max(...dayTimeSolarDataMonth.map(solardata=>solardata[2]))
-  const peakSolarScoreMonthDayAndTime= formatDateForSolarData(dayTimeSolarDataMonth.find(solardata=>solardata[2]===peakSolarScoreMonth)[1])
+  const daytimeDataMonth = solarMonth.filter(solardata=> patternNineToFive.test(solardata[1])) 
+  const daytimeDataBarWidthMonth = 100/(daytimeDataMonth.length) //ensures that the bars fill 99% of the width of the graph
+  const peakMWMonth= Math.max(...daytimeDataMonth.map(solardata=>solardata[2]))
+  const peakMWMonthDayAndTime= formatDateForSolarData(daytimeDataMonth.find(solardata=>solardata[2]===peakMWMonth)[1])
 
   // Annual get solar data
   const patternTwoPM = /^(\d{4}-\d{2}-\d{2}T14:00:00Z)$/;
   const dataYear = getSolar(startingDateYear , startingTime, endDateAndTime, endTime)
   const solarDataYear = await Promise.all([dataYear])
   const solarYear = (solarDataYear[0].data)
-  const dayTimeSolarDataYear = solarYear.filter(solardata=> patternTwoPM.test(solardata[1])) 
-  const dayTimeSolarDataBarWidthYear = 100/(dayTimeSolarDataYear.length) //ensures that the bars fill 99% of the width of the graph
-  const peakSolarScoreYear= Math.max(...dayTimeSolarDataYear.map(solardata=>solardata[2]))
-  const peakSolarScoreYearDayAndTime= formatDateForSolarData(dayTimeSolarDataYear.find(solardata=>solardata[2]===peakSolarScoreYear)[1])
+  const daytimeDataYear = solarYear.filter(solardata=> patternTwoPM.test(solardata[1])) 
+  const daytimeDataBarWidthYear = 100/(daytimeDataYear.length) //ensures that the bars fill 99% of the width of the graph
+  const peakMWYear= Math.max(...daytimeDataYear.map(solardata=>solardata[2]))
+  const peakMWYearDayAndTime= formatDateForSolarData(daytimeDataYear.find(solardata=>solardata[2]===peakMWYear)[1])
 
   return (<>
     <div className='background flex-col justify-between align-between text-sm'>
     {/* TOP HALF OF PAGE */}
       <div className='flex justify-between p-8'>
         <SolarTitle />
-        <Sun energyProduced={solarDay} peakSolarScoreDay={peakSolarScoreDay} peakSolarScoreWeek={peakSolarScoreWeek}/>
-        <SolarData peakSolarScoreWeek={peakSolarScoreWeek} peakSolarScoreWeekDayAndTime={peakSolarScoreWeekDayAndTime} peakSolarScoreMonth={peakSolarScoreMonth}  peakSolarScoreMonthDayAndTime={peakSolarScoreMonthDayAndTime} 
-        peakSolarScoreYear={peakSolarScoreYear} peakSolarScoreYearDayAndTime={peakSolarScoreYearDayAndTime}/>
+        <Sun energyProduced={solarDay} peakMWDay={peakMWDay} peakMWWeek={peakMWWeek}/>
+        <SolarData peakMWWeek={peakMWWeek} peakMWWeekDayAndTime={peakMWWeekDayAndTime} peakMWMonth={peakMWMonth}  peakMWMonthDayAndTime={peakMWMonthDayAndTime} 
+        peakMWYear={peakMWYear} peakMWYearDayAndTime={peakMWYearDayAndTime}/>
       </div>
-      <Graphs dayTimeSolarDataWeek={dayTimeSolarDataWeek} dayTimeSolarDataBarWidthWeek={dayTimeSolarDataBarWidthWeek} peakSolarScoreWeek={peakSolarScoreWeek} dayTimeSolarDataMonth={dayTimeSolarDataMonth} dayTimeSolarDataBarWidthMonth={dayTimeSolarDataBarWidthMonth} peakSolarScoreMonth={peakSolarScoreMonth} dayTimeSolarDataYear={dayTimeSolarDataYear} dayTimeSolarDataBarWidthYear={dayTimeSolarDataBarWidthYear} peakSolarScoreYear={peakSolarScoreYear} dayDate={dataDay} />
+      <Graphs daytimeDataWeek={daytimeDataWeek} daytimeDataBarWidthWeek={daytimeDataBarWidthWeek} peakMWWeek={peakMWWeek} daytimeDataMonth={daytimeDataMonth} daytimeDataBarWidthMonth={daytimeDataBarWidthMonth} peakMWMonth={peakMWMonth} daytimeDataYear={daytimeDataYear} daytimeDataBarWidthYear={daytimeDataBarWidthYear} peakMWYear={peakMWYear} dayDate={dataDay} />
 
     </div> 
   </>

@@ -8,15 +8,15 @@ import { useState, useEffect } from "react";
 import "../App.css";
 
 export default function Graphs({
-	dayTimeSolarDataWeek,
-	dayTimeSolarDataBarWidthWeek,
-	highestSolarDataValueWeek,
-	dayTimeSolarDataMonth,
-	dayTimeSolarDataBarWidthMonth,
-	highestSolarDataValueMonth,
-	dayTimeSolarDataYear,
-	dayTimeSolarDataBarWidthYear,
-	highestSolarDataValueYear,
+	daytimeDataWeek,
+	daytimeDataBarWidthWeek,
+	peakMWWeek,
+	daytimeDataMonth,
+	daytimeDataBarWidthMonth,
+	peakMWMonth,
+	daytimeDataYear,
+	daytimeDataBarWidthYear,
+	peakMWYear,
 }) {
 	const [display, setDisplay] = useState("last week");
 
@@ -27,7 +27,7 @@ export default function Graphs({
 	return (
 		<>
 			{/* FULL COMPONENT SECTION CONTAINER */}
-			<section className="">
+			<section className="w-full">
 				{/* GRAPH SELECTOR */}
 				<div className="graph-selector">
 					<div>Choose a date range: </div>
@@ -62,23 +62,23 @@ export default function Graphs({
 
 				{display === "last week" && (
 					<WeeklyGraph
-						dayTimeSolarDataWeek={dayTimeSolarDataWeek}
-						dayTimeSolarDataBarWidthWeek={dayTimeSolarDataBarWidthWeek}
-						highestSolarDataValueWeek={highestSolarDataValueWeek}
+						daytimeDataWeek={daytimeDataWeek}
+						daytimeDataBarWidthWeek={daytimeDataBarWidthWeek}
+						peakMWWeek={peakMWWeek}
 					/>
 				)}
 				{display === "last month" && (
 					<MonthlyGraph
-						dayTimeSolarDataMonth={dayTimeSolarDataMonth}
-						dayTimeSolarDataBarWidthMonth={dayTimeSolarDataBarWidthMonth}
-						highestSolarDataValueMonth={highestSolarDataValueMonth}
+						daytimeDataMonth={daytimeDataMonth}
+						daytimeDataBarWidthMonth={daytimeDataBarWidthMonth}
+						peakMWMonth={peakMWMonth}
 					/>
 				)}
 				{display === "last year" && (
 					<YearlyGraph
-						dayTimeSolarDataYear={dayTimeSolarDataYear}
-						dayTimeSolarDataBarWidthYear={dayTimeSolarDataBarWidthYear}
-						highestSolarDataValueYear={highestSolarDataValueYear}
+						daytimeDataYear={daytimeDataYear}
+						daytimeDataBarWidthYear={daytimeDataBarWidthYear}
+						peakMWYear={peakMWYear}
 					/>
 				)}
 			</section>

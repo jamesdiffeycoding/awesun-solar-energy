@@ -33,7 +33,7 @@ export function formatDateForSolarData(dateString) {
   const formattedDate = date.toLocaleString('en-US', options);
   const suffix = getDaySuffix(date.getDate());
   
-  return ` ${formattedDate}}`;
+  return ` ${formattedDate}`;
 }
 
 function getDaySuffix(day) {
