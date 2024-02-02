@@ -4,7 +4,9 @@ import { useEffect, useState } from "react";
 
 const Sun = ({ energyProduced, peakMWDay, peakMWWeek }) => {
 	const [sunSize, setSunSize] = useState(10); // default size
-	const [widthOfScreenWhenLoaded, setwidthOfScreenWhenLoaded] = useState(window.innerWidth);
+	let windowSize = window.innerWidth
+	console.log(windowSize)
+	const [widthOfScreenWhenLoaded, setwidthOfScreenWhenLoaded] = useState(windowSize);
 	useEffect(() => {
 		const updateSunSize = () => {
 			// Assuming that energyProduced is an array and you want to use the first value as an example
@@ -17,7 +19,7 @@ const Sun = ({ energyProduced, peakMWDay, peakMWWeek }) => {
 			const widthOfScreenWhenLoaded = window.innerWidth; 
 			const newSize = (peakMWDay / peakMWWeek) * 0.7 * widthOfScreenWhenLoaded; // Adjust the multiplier as needed
 			setSunSize(newSize);
-			setwidthOfScreenWhenLoaded(window.innerWidth);
+			setwidthOfScreenWhenLoaded(windowSize);
 		};
 
 		// Update sun size whenever energyProduced changes
