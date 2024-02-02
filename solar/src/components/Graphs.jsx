@@ -46,7 +46,7 @@ export default function Graphs({
 							display === "last month" ? "underline" : "no-underline"
 						}`}
 					>
-						month
+						last month
 					</span>{" "}
 					/{" "}
 					<span
@@ -55,7 +55,7 @@ export default function Graphs({
 							display === "last year" ? "underline" : "no-underline"
 						}`}
 					>
-						year
+						last year
 					</span>
 				</div>
 				{/* GRAPH DISPLAY */}
