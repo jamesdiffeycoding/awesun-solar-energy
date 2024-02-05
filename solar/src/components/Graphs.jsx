@@ -27,9 +27,9 @@ export default function Graphs({
 	return (
 		<>
 			{/* FULL COMPONENT SECTION CONTAINER */}
-			<section className="w-full">
+			<section className="w-full fixed bottom-0">
 				{/* GRAPH SELECTOR */}
-				<div className="graph-selector">
+				<div className="pl-9 fixed bottom-1/3 z-50">
 					<div>Choose a date range: </div>
 					<span
 						onClick={handleDisplay}

@@ -7,7 +7,7 @@ export default function WeeklyGraph({daytimeDataWeek, daytimeDataBarWidthWeek, p
     return(
         <>
         {/* WEEK CONTAINER */}
-        <section className="fixed bottom-0 w-full">
+        <section className="w-full">
             <div className="graph" key="graph">
                 {daytimeDataWeek.reverse().map((dataPoint, index) => (dataPoint[1].includes("09:00:00")) ? (
                 <React.Fragment key={`${index}-frag`} >

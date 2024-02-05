@@ -18,9 +18,7 @@
 .supersmalltext{
   font-size: 9px;
 }
-.graph-selector{
-  padding-left: 2rem;
-}
+
 .graph {
   background-color: transparent;
   display: flex;
@@ -92,13 +90,5 @@
     height: 50%;
     margin-top: 70%;
     margin-right: 100%;
-  }
-}
-
-
-@media (orientation: portrait) {
-
-  .graph-selector {
-    margin-top: 8rem;
   }
 }
