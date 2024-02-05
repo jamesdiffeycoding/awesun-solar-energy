@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       animation: {
         shine: 'shine 4s ease-in-out infinite',
+        slide: 'slide 5s ease-in-out'
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
