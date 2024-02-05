@@ -7,6 +7,11 @@ import Sun from "@/components/Sun";
 import {getEndDate, getEndTime, getEndDateAndTime, getStartingDate} from "@/app/getDates";
 import {formatDateForSolarData} from "./helper.js"
 
+// CONTEXT FOR SCALING THE SUN
+// import graphHoverContext from "@/components/graphHoverBarContext.js";
+
+
+
 // DATE AND TIME VARIABLES
 let endTime = getEndTime()
 let startingTime = endTime
@@ -35,7 +40,6 @@ export default async function Home() {
   const solarDataDay = await Promise.all([dataDay])
   const solarDay = (solarDataDay[0].data)
   const daytimeDataDay = solarDay.filter(solardata=> patternNineToFive.test(solardata[1])) 
-  const daytimeDataBarWidthDay = 100/(daytimeDataDay.length) //ensures that the bars fill 99% of the width of the graph
   const peakMWDay= Math.max(...daytimeDataDay.map(solardata=>solardata[2]))
 
   // Weekly get solar data
@@ -67,7 +71,7 @@ export default async function Home() {
   const peakMWYearDayAndTime= formatDateForSolarData(daytimeDataYear.find(solardata=>solardata[2]===peakMWYear)[1])
 
   return (<>
-    <div className="backgroundImage -z-30"></div>
+    <div className="backgroundImage -z-30"></div> {/* This does not need to wrap the page, it just goes behind */}
     <div className="-z-20">
       <Sun energyProduced={solarDay} peakMWDay={peakMWDay} peakMWWeek={peakMWWeek}/>
     </div>

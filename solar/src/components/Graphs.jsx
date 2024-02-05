@@ -3,9 +3,11 @@ import WeeklyGraph from "./WeeklyGraph.jsx";
 import MonthlyGraph from "./MonthlyGraph.jsx";
 import YearlyGraph from "./YearlyGraph.jsx";
 import { useState, useEffect } from "react";
+import graphHoverContext from "./graphHoverBarContext.js";
 
 // STYLES
 import "../App.css";
+
 
 export default function Graphs({
 	daytimeDataWeek,
@@ -23,6 +25,12 @@ export default function Graphs({
 	const handleDisplay = (event) => {
 		setDisplay(event.target.textContent);
 	};
+	const [barHovered, setBarHovered] = useState("Hover over a bar to see the data");
+	function updateBarContext(newValue) {
+		setBarHovered (newValue);
+		console.log("barHovered", barHovered)
+	}
+
 
 	return (
 		<>
@@ -30,6 +38,7 @@ export default function Graphs({
 			<section className="w-full fixed bottom-0">
 				{/* GRAPH SELECTOR */}
 				<div className="pl-9 fixed bottom-1/3 z-50">
+					<div className="text-black">{barHovered} </div>
 					<div>Choose a date range: </div>
 					<span
 						onClick={handleDisplay}
@@ -59,12 +68,14 @@ export default function Graphs({
 					</span>
 				</div>
 				{/* GRAPH DISPLAY */}
-
+				<graphHoverContext.Provider value={{ graphHoverContext }}>
 				{display === "last week" && (
 					<WeeklyGraph
 						daytimeDataWeek={daytimeDataWeek}
 						daytimeDataBarWidthWeek={daytimeDataBarWidthWeek}
 						peakMWWeek={peakMWWeek}
+						updateBarContext={updateBarContext}
+						barHovered={barHovered}
 					/>
 				)}
 				{display === "month" && (
@@ -72,6 +83,7 @@ export default function Graphs({
 						daytimeDataMonth={daytimeDataMonth}
 						daytimeDataBarWidthMonth={daytimeDataBarWidthMonth}
 						peakMWMonth={peakMWMonth}
+						updateBarContext={updateBarContext}
 					/>
 				)}
 				{display === "year" && (
@@ -79,8 +91,10 @@ export default function Graphs({
 						daytimeDataYear={daytimeDataYear}
 						daytimeDataBarWidthYear={daytimeDataBarWidthYear}
 						peakMWYear={peakMWYear}
+						updateBarContext={updateBarContext}
 					/>
 				)}
+				</graphHoverContext.Provider>
 			</section>
 		</>
 	);
