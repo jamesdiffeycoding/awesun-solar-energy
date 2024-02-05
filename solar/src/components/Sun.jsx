@@ -26,18 +26,18 @@ const Sun = ({ energyProduced, peakMWDay, peakMWWeek }) => {
 
 
 	return (<>
-      <div class="sunGrid grid absolute w-screen h-screen">
+      <div className="sunGrid grid absolute w-screen h-screen">
        {/* placeholder 4 grid items  */}
-          <div class="text-transparent"></div>
-          <div class="text-transparent"></div>
-          <div class="text-transparent"></div>
-          <div class="text-transparent"></div>
+          <div className="text-transparent"></div>
+          <div className="text-transparent"></div>
+          <div className="text-transparent"></div>
+          <div className="text-transparent"></div>
 
         {/* THE SUN  */}
-          <div class = "flex text-center justify-center items-center w-full">
-            <div class="heroContainer pb-square h-full flex justify-center items-center">
-              <div class="largestSquare w-full aspect-square flex justify-center items-center">
-                <div class= "sunCircle bg-yellow-400 w-full h-full z-30" 
+          <div className = "flex text-center justify-center items-center w-full">
+            <div className="heroContainer pb-square h-full flex justify-center items-center">
+              <div className="largestSquare w-full aspect-square flex justify-center items-center">
+                <div className= "sunCircle bg-yellow-400 w-full h-full z-30" 
 				
 				// style = {{width: "50%", height: "50%"}}
 				></div>
@@ -45,10 +45,10 @@ const Sun = ({ energyProduced, peakMWDay, peakMWWeek }) => {
             </div>
           </div>
         {/* placeholder 4 grid items */}
-        <div class="text-transparent"></div>
-        <div class="text-transparent"></div>
-        <div class="text-transparent"></div>
-        <div class="text-transparent"></div>
+        <div className="text-transparent"></div>
+        <div className="text-transparent"></div>
+        <div className="text-transparent"></div>
+        <div className="text-transparent"></div>
       </div> 		
 	</>
 	  );
