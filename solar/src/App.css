@@ -2,12 +2,18 @@
   color: white;
 }
 
-.background {
+.backgroundImage {
+  position: absolute;
   height: 100vh;
   width: 100vw;
   margin: 0;
   background-image: linear-gradient(-179deg,rgb(0,90,107) 0px,rgb(0,135,160) 26%,rgb(51,195,221) 57%,rgb(153,225,238) 100%)
+}
 
+.customContainer {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
 }
 .supersmalltext{
   font-size: 9px;
@@ -49,8 +55,18 @@
   background-color: rgb(255, 182, 80) !important;
 }
 
-.sun {
+.sunGrid {
+  z-index: -20;
+  grid-template-columns: 23% 54% 23%;
+  grid-template-rows: 8% 40% 52%;
+}
+
+.sunCircle {
   animation: shine 4s ease-in-out infinite;
+  /* z-index: 1000; */
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
 
 @keyframes shine {
@@ -59,5 +75,30 @@
     0 0 50px rgb(255, 220, 114),
      0 0 80px rgb(255, 220, 114), 
      0 0 120px rgb(255, 220, 114);
+  }
+}
+
+@media (orientation: landscape) {
+  .sunGrid .heroContainer .largestSquare {
+    height: 100%;
+    width: auto;
+  }
+}
+
+@media (orientation: portrait) {
+
+  .sunGrid .heroContainer .largestSquare {
+    width: 100%; 
+    height: 50%;
+    margin-top: 70%;
+    margin-right: 100%;
+  }
+}
+
+
+@media (orientation: portrait) {
+
+  .graph-selector {
+    margin-top: 8rem;
   }
 }

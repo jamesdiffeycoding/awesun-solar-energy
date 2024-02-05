@@ -67,15 +67,18 @@ export default async function Home() {
   const peakMWYearDayAndTime= formatDateForSolarData(daytimeDataYear.find(solardata=>solardata[2]===peakMWYear)[1])
 
   return (<>
-    <div className='background flex-col justify-between align-between text-sm'>
+    <div className="backgroundImage -z-30"></div>
+    <div className="-z-20">
+      <Sun energyProduced={solarDay} peakMWDay={peakMWDay} peakMWWeek={peakMWWeek}/>
+    </div>
+    <div className='customContainer flex-col justify-between align-between text-sm'>
     {/* TOP HALF OF PAGE */}
       <div className='flex justify-between p-8'>
         <SolarTitle />
         <SolarData peakMWWeek={peakMWWeek} peakMWWeekDayAndTime={peakMWWeekDayAndTime} peakMWMonth={peakMWMonth} peakMWMonthDayAndTime={peakMWMonthDayAndTime} 
         peakMWYear={peakMWYear} peakMWYearDayAndTime={peakMWYearDayAndTime}/>
       </div>
-      <div className="fixed left-1/2 top-1/3  transform -translate-x-1/2 -translate-y-1/2">
-        <Sun energyProduced={solarDay} peakMWDay={peakMWDay} peakMWWeek={peakMWWeek}/>
+      <div className="">
       </div>
       <Graphs daytimeDataWeek={daytimeDataWeek} daytimeDataBarWidthWeek={daytimeDataBarWidthWeek} peakMWWeek={peakMWWeek} daytimeDataMonth={daytimeDataMonth} daytimeDataBarWidthMonth={daytimeDataBarWidthMonth} peakMWMonth={peakMWMonth} daytimeDataYear={daytimeDataYear} daytimeDataBarWidthYear={daytimeDataBarWidthYear} peakMWYear={peakMWYear} dayDate={dataDay} />
     </div> 

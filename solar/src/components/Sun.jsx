@@ -25,18 +25,32 @@ const Sun = ({ energyProduced, peakMWDay, peakMWWeek }) => {
 	}, [energyProduced]);
 
 
-	return (
-		<div
-		  className={`sun w-12 sm:w-20 md:w-48 lg:w-64 xl:w-96 2xl:w-128 
-					  h-12 sm:h-20 md:h-48 lg:h-64 xl:h-96 2xl:h-128 
-					  transition-width duration-500 ease-in-out 
-					  transition-height duration-500 ease-in-out 
-					  bg-yellow-400 rounded-full flex items-center justify-center animate-shine`}
-		  style={{
-			width: `${sunSize}px`,
-			height: `${sunSize}px`,
-		  }}
-		/>
+	return (<>
+      <div class="sunGrid grid absolute w-screen h-screen">
+       {/* placeholder 4 grid items  */}
+          <div class="text-transparent"></div>
+          <div class="text-transparent"></div>
+          <div class="text-transparent"></div>
+          <div class="text-transparent"></div>
+
+        {/* THE SUN  */}
+          <div class = "flex text-center justify-center items-center w-full">
+            <div class="heroContainer pb-square h-full flex justify-center items-center">
+              <div class="largestSquare w-full aspect-square flex justify-center items-center">
+                <div class= "sunCircle bg-yellow-400 w-full h-full z-30" 
+				
+				// style = {{width: "50%", height: "50%"}}
+				></div>
+              </div>
+            </div>
+          </div>
+        {/* placeholder 4 grid items */}
+        <div class="text-transparent"></div>
+        <div class="text-transparent"></div>
+        <div class="text-transparent"></div>
+        <div class="text-transparent"></div>
+      </div> 		
+	</>
 	  );
 	};
 
