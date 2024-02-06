@@ -28,14 +28,14 @@ Next.js, Tailwind , HTML, CSS \
 We experimented with Apex Charts but decided to code the graphs in Tailwind/CSS/JSX
 
 # Challenges
-- Fetching data without CORS errors - switched project from React to Next.js so we could fetch data in a server component. \
-- Making the design mobile-responsive. \
+- Fetching data without CORS errors - switched project from React to Next.js so we could fetch data in a server component. 
+- Making the design mobile-responsive. 
 - Sizing the sun responsively.
 
 # Accomplishments
 Glowing sun that changes size based on energy consumption / screensize.
 
 # What We Learned
-- How to make the size of the sun responsive using css grid \
-- Tailwind and Tailwind animations \
+- How to make the size of the sun responsive using css grid 
+- Tailwind and Tailwind animations 
 - How to code a graph component
