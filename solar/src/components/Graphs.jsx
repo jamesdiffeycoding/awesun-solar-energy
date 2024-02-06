@@ -20,41 +20,46 @@ export default function Graphs({
 	daytimeDataBarWidthYear,
 	peakMWYear,
 }) {
-	const [display, setDisplay] = useState("last week");
-	const [sunSizeState, setSunSizeState] = useState(100);
+	const [graphToDisplay, setGraphToDisplay] = useState("last week");
 	const handleDisplay = (event) => {
-		setDisplay(event.target.textContent);
+		setGraphToDisplay(event.target.textContent);
 	};
-	const [barHovered, setBarHovered] = useState("data");	
+
 	const [barHoveredInformation, setBarHoveredInformation] = useState("Hover below to see");
+	const [barHovered, setBarHovered] = useState("data");	
+	
+	const [sunSizeState, setSunSizeState] = useState(100);
+
 	function updateBarContext(newValue) {
 		let peakMWForComparison = 0;
-		if (display == "last week") {
+		if (graphToDisplay == "last week") {
 			peakMWForComparison = peakMWWeek;
-		} else if (display == "month") {
+		} else if (graphToDisplay == "month") {
 			peakMWForComparison = peakMWMonth;
 		} else {
 			peakMWForComparison = peakMWYear;
 		}
+		// PRODUCTION NUMBER
 		let newValueRounded = Math.ceil(newValue[2]);
+		setBarHovered(newValueRounded + " MW")
+		setSunSizeState (sunSizeState => newValueRounded / peakMWForComparison * 100);
+
+		// DATE AND TIME INFORMATION USING HELPER.JS IMPORTED FUNCTIONS
 		let formattedInformation = formatDateForSolarData(newValue[1]);
 		let timeHalfHourLater = getTimeHalfHourLater(newValue[1]);
 		let informationToDisplay = `${formattedInformation}-${timeHalfHourLater}`;
-		setBarHovered(newValueRounded + " MW")
 		setBarHoveredInformation(informationToDisplay)
-		setSunSizeState (sunSizeState => newValueRounded / peakMWForComparison * 100);
 	}
 
 	return (
 		<>	
-			{/* SUN */}
+			{/* SUN GRID */}
 				<div className="sunGrid grid absolute w-screen h-screen top-0">
 				{/* placeholder 4 grid items  */}
-				<div className="text-transparent"></div>
-					<div className="text-transparent"></div>
-					<div className="text-transparent"></div>
-					<div className="text-transparent"></div>
-
+				<div className=""></div>
+					<div className=""></div>
+					<div className=""></div>
+					<div className=""></div>
 					{/* THE SUN  */}
 					<div className = "flex text-center justify-center items-center w-full">
 						<div className="heroContainer pb-square h-full flex justify-center items-center aspect-square">
@@ -65,31 +70,31 @@ export default function Graphs({
 						</div>
 					</div>
 					{/* placeholder 4 grid items */}
-					<div className="text-transparent"></div>
-					<div className="text-transparent"></div>
-					<div className="text-transparent"></div>
-					<div className="text-transparent"></div>
+					<div className=""></div>
+					<div className=""></div>
+					<div className=""></div>
+					<div className=""></div>
 				</div>
 				<div>
 				</div> 		
 
 			{/* FULL COMPONENT SECTION CONTAINER */}
 			<section className="w-full fixed bottom-0">
-				{/* GRAPH SELECTOR */}
+				{/* GRAPH SELECTOR AND HOVERED STATISTICS */}
 				<div className="flex w-full justify-between pl-9 pr-9 fixed bottom-1/3 z-50">
 					<div className="text-slate-900">
 						<div>Choose <span className="hide-when-portrait">date</span> range: </div>
-						<span onClick={handleDisplay} className={`cursor-pointer hover:text-white ${ display === "last week" ? "underline" : "no-underline" }`} >
+						<span onClick={handleDisplay} className={`cursor-pointer hover:text-white ${ graphToDisplay === "last week" ? "underline" : "no-underline" }`} >
 							last week</span>{" "} /{" "}
-						<span onClick={handleDisplay} className={`cursor-pointer hover:text-white ${ display === "month" ? "underline" : "no-underline" }`} >
+						<span onClick={handleDisplay} className={`cursor-pointer hover:text-white ${ graphToDisplay === "month" ? "underline" : "no-underline" }`} >
 							month</span>{" "} /{" "}
-						<span onClick={handleDisplay} className={`cursor-pointer hover:text-white ${ display === "year" ? "underline" : "no-underline" }`} >
+						<span onClick={handleDisplay} className={`cursor-pointer hover:text-white ${ graphToDisplay === "year" ? "underline" : "no-underline" }`} >
 							year</span>
 					</div>
 					<div className="text-right ">{barHoveredInformation} <p className="text-yellow-500">{barHovered}</p> </div>
 				</div>
 				{/* GRAPH DISPLAY */}
-				{display === "last week" && (
+				{graphToDisplay === "last week" && (
 					<WeeklyGraph
 						daytimeDataWeek={daytimeDataWeek}
 						daytimeDataBarWidthWeek={daytimeDataBarWidthWeek}
@@ -98,7 +103,7 @@ export default function Graphs({
 						barHovered={barHovered}
 					/>
 				)}
-				{display === "month" && (
+				{graphToDisplay === "month" && (
 					<MonthlyGraph
 						daytimeDataMonth={daytimeDataMonth}
 						daytimeDataBarWidthMonth={daytimeDataBarWidthMonth}
@@ -106,7 +111,7 @@ export default function Graphs({
 						updateBarContext={updateBarContext}
 					/>
 				)}
-				{display === "year" && (
+				{graphToDisplay === "year" && (
 					<YearlyGraph
 						daytimeDataYear={daytimeDataYear}
 						daytimeDataBarWidthYear={daytimeDataBarWidthYear}
