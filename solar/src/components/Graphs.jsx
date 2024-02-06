@@ -3,13 +3,13 @@ import WeeklyGraph from "./WeeklyGraph.jsx";
 import MonthlyGraph from "./MonthlyGraph.jsx";
 import YearlyGraph from "./YearlyGraph.jsx";
 import { useState, useEffect } from "react";
-import graphHoverContext from "./graphHoverBarContext.js";
-
+import { formatDateForSolarData, getTimeHalfHourLater} from "@/app/helper.js";
 // STYLES
 import "../App.css";
 
 
 export default function Graphs({
+	peakMWDay,
 	daytimeDataWeek,
 	daytimeDataBarWidthWeek,
 	peakMWWeek,
@@ -21,54 +21,74 @@ export default function Graphs({
 	peakMWYear,
 }) {
 	const [display, setDisplay] = useState("last week");
-
+	const [sunSizeState, setSunSizeState] = useState(100);
 	const handleDisplay = (event) => {
 		setDisplay(event.target.textContent);
 	};
-	const [barHovered, setBarHovered] = useState("Hover over a bar to see the data");
+	const [barHovered, setBarHovered] = useState("data");	
+	const [barHoveredInformation, setBarHoveredInformation] = useState("Hover below to see");
 	function updateBarContext(newValue) {
-		setBarHovered (newValue);
-		console.log("barHovered", barHovered)
+		let peakMWForComparison = 0;
+		if (display == "last week") {
+			peakMWForComparison = peakMWWeek;
+		} else if (display == "month") {
+			peakMWForComparison = peakMWMonth;
+		} else {
+			peakMWForComparison = peakMWYear;
+		}
+		let newValueRounded = Math.ceil(newValue[2]);
+		let formattedInformation = formatDateForSolarData(newValue[1]);
+		let timeHalfHourLater = getTimeHalfHourLater(newValue[1]);
+		let informationToDisplay = `${formattedInformation}-${timeHalfHourLater}`;
+		setBarHovered(newValueRounded + " MW")
+		setBarHoveredInformation(informationToDisplay)
+		setSunSizeState (sunSizeState => newValueRounded / peakMWForComparison * 100);
 	}
 
-
 	return (
-		<>
+		<>	
+			{/* SUN */}
+				<div className="sunGrid grid absolute w-screen h-screen top-0">
+				{/* placeholder 4 grid items  */}
+				<div className="text-transparent"></div>
+					<div className="text-transparent"></div>
+					<div className="text-transparent"></div>
+					<div className="text-transparent"></div>
+
+					{/* THE SUN  */}
+					<div className = "flex text-center justify-center items-center w-full">
+						<div className="heroContainer pb-square h-full flex justify-center items-center aspect-square">
+						<div className="largestSquare w-full h-full aspect-square flex justify-center items-center"
+								style={{height: `${sunSizeState}%`, width: `${sunSizeState}%`, transition: 'width 1s ease, height 1s ease'}}>
+								<div className= "sunCircle bg-yellow-400 w-full h-full z-30 aspect-square"></div>
+						</div>
+						</div>
+					</div>
+					{/* placeholder 4 grid items */}
+					<div className="text-transparent"></div>
+					<div className="text-transparent"></div>
+					<div className="text-transparent"></div>
+					<div className="text-transparent"></div>
+				</div>
+				<div>
+				</div> 		
+
 			{/* FULL COMPONENT SECTION CONTAINER */}
 			<section className="w-full fixed bottom-0">
 				{/* GRAPH SELECTOR */}
-				<div className="pl-9 fixed bottom-1/3 z-50">
-					<div className="text-black">{barHovered} </div>
-					<div>Choose a date range: </div>
-					<span
-						onClick={handleDisplay}
-						className={`cursor-pointer hover:text-slate-900 ${
-							display === "last week" ? "underline" : "no-underline"
-						}`}
-					>
-						last week
-					</span>{" "}
-					/{" "}
-					<span
-						onClick={handleDisplay}
-						className={`cursor-pointer hover:text-slate-900 ${
-							display === "month" ? "underline" : "no-underline"
-						}`}
-					>
-						month
-					</span>{" "}
-					/{" "}
-					<span
-						onClick={handleDisplay}
-						className={`cursor-pointer hover:text-slate-900 ${
-							display === "year" ? "underline" : "no-underline"
-						}`}
-					>
-						year
-					</span>
+				<div className="flex w-full justify-between pl-9 pr-9 fixed bottom-1/3 z-50">
+					<div className="text-slate-900">
+						<div>Choose <span className="hide-when-portrait">date</span> range: </div>
+						<span onClick={handleDisplay} className={`cursor-pointer hover:text-white ${ display === "last week" ? "underline" : "no-underline" }`} >
+							last week</span>{" "} /{" "}
+						<span onClick={handleDisplay} className={`cursor-pointer hover:text-white ${ display === "month" ? "underline" : "no-underline" }`} >
+							month</span>{" "} /{" "}
+						<span onClick={handleDisplay} className={`cursor-pointer hover:text-white ${ display === "year" ? "underline" : "no-underline" }`} >
+							year</span>
+					</div>
+					<div className="text-right ">{barHoveredInformation} <p className="text-yellow-500">{barHovered}</p> </div>
 				</div>
 				{/* GRAPH DISPLAY */}
-				<graphHoverContext.Provider value={{ graphHoverContext }}>
 				{display === "last week" && (
 					<WeeklyGraph
 						daytimeDataWeek={daytimeDataWeek}
@@ -94,7 +114,6 @@ export default function Graphs({
 						updateBarContext={updateBarContext}
 					/>
 				)}
-				</graphHoverContext.Provider>
 			</section>
 		</>
 	);

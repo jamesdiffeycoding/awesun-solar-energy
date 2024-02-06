@@ -27,12 +27,10 @@ export function formatDateForSolarData(dateString) {
     month: 'short',
     hour: 'numeric',
     minute: 'numeric',
-    hour12: true
+    hour12: false //shows the AM or PM, 15:00 instead of 3:00 PM
   };
   
   const formattedDate = date.toLocaleString('en-US', options);
-  const suffix = getDaySuffix(date.getDate());
-  
   return ` ${formattedDate}`;
 }
 
@@ -59,3 +57,16 @@ function getDaySuffix(day) {
 // const dateString = "2024-02-26T12:30:00Z";
 // const formattedDate = formatDate(dateString);
 // console.log(formattedDate);
+
+export function getTimeHalfHourLater(dateString) {
+  const date = new Date(dateString);
+  date.setMinutes(date.getMinutes() + 30);
+
+  const options = { 
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: false //shows the AM or PM, 15:00 instead of 3:00 PM
+  };
+
+  return date.toLocaleString('en-US', options);
+}
