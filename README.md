@@ -14,12 +14,12 @@ The size of the sun changes depending on the value of the selected solar energy 
 
 # Tech Stack
 Next.js, Tailwind , HTML, CSS \
-We experimented with Apex Charts but decided to just code the graphs in Tailwind/CSS/JSX
+We experimented with Apex Charts but decided to code the graphs in Tailwind/CSS/JSX
 
 # Challenges
 Fetching data without CORS errors - switched project from React to Next.js so we could fetch data in a server component \
 Mobile responsiveness \
-Sizing the sun
+Sizing the sun responsively
 
 # Accomplishments
 Glowing sun that changes size based on energy consumption / screensize
