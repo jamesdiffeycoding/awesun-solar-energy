@@ -1,4 +1,7 @@
 # Awesun
+
+![image](https://github.com/SaraThampi/Solar-Energy/assets/128574441/f0a8c261-d52d-46ca-bb75-1b53c3141696)
+
 Displaying the UK's solar energy production in MW visually \
 Data is fetched from the University of Sheffield Solar API
 
