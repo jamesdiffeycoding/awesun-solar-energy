@@ -1,7 +1,7 @@
 "use client"
 import { useState, useContext} from "react"
 import React from "react"
-
+import { formatDateToGetDayOnly } from "@/app/helper"
 export default function WeeklyGraph({daytimeDataWeek, daytimeDataBarWidthWeek, peakMWWeek, updateBarContext}){
 
     return(
@@ -12,7 +12,7 @@ export default function WeeklyGraph({daytimeDataWeek, daytimeDataBarWidthWeek, p
                 {daytimeDataWeek.map((dataPoint, index) => (dataPoint[1].includes("09:00:00")) ? (
                 <React.Fragment key={`${index}-frag`} >
                 <div className="verticalstrip" key={index}>
-                    <div className="break" key={`${index}-break`} ></div>
+                    <div className="break flex flex-col-reverse" key={`${index}-break`} ><div className="pl-2">{formatDateToGetDayOnly(dataPoint[1])}</div></div>
                 </div>
                 <div className="verticalstrip" key={`${index}-strip`} style={{ width: `${daytimeDataBarWidthWeek}%` }}  onMouseEnter={function () {updateBarContext(dataPoint)}}>
                     <div className="w-full bg-green-800 rounded-t-lg bg-gradient-to-b from-green-800 to-green-600" style={{ height:  `${98*dataPoint[2]/peakMWWeek}%`  }} key={`${index}-bar`} ></div>

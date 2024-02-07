@@ -70,3 +70,44 @@ export function getTimeHalfHourLater(dateString) {
 
   return date.toLocaleString('en-US', options);
 }
+
+
+export function formatDateToGetDayOnly(dateString) {
+  const date = new Date(dateString);
+  
+  const options = { 
+    weekday: 'short', 
+    hour12: false //shows the AM or PM, 15:00 instead of 3:00 PM
+  };
+  const formattedDate = date.toLocaleString('en-US', options);
+  return ` ${formattedDate}`;
+}
+
+export function formatDateToGetNumberAndMonthOnly(dateString) {
+  const date = new Date(dateString);
+  
+  const options = { 
+    // weekday: 'short', 
+    day: 'numeric', 
+    month: 'numeric',
+    hour12: false //shows the AM or PM, 15:00 instead of 3:00 PM
+  };
+
+  const formattedDate = date.toLocaleString('en-US', options);
+  return ` ${formattedDate}`;
+}
+
+
+
+export function formatDateToGetMonthOnly(dateString) {
+  const date = new Date(dateString);
+  
+  const options = { 
+    // weekday: 'short', 
+    month: 'short',
+    hour12: false //shows the AM or PM, 15:00 instead of 3:00 PM
+  };
+
+  const formattedDate = date.toLocaleString('en-US', options);
+  return ` ${formattedDate}`;
+}
