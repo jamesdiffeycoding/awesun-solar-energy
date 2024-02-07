@@ -6,10 +6,10 @@ Displaying the UK's solar energy production visually \
 Design and Code by [James Diffey,](https://github.com/jamesdiffeycoding) [Matt Kirke](https://github.com/mattkirke) and [Sara Thampi](https://github.com/SaraThampi)
 
 <br />
-Data from the University of Sheffield Solar API \
-https://www.solar.sheffield.ac.uk/pvlive/ \
+Data from the University of Sheffield Solar API 
+https://www.solar.sheffield.ac.uk/pvlive/ 
 <br />
-Please visit the deployed site: \
+Please visit the deployed site: 
 https://solar-energy-alpha.vercel.app/
 
 ## Inspiration
