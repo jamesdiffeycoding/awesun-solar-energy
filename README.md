@@ -1,4 +1,4 @@
-# Awesun Solar Energy Visualiser
+# Awesun Solar Visualiser
 
 ## Inspiration
 When someone plugs in their phone, or turns on their kettle, **where does that electricity come from**? 
