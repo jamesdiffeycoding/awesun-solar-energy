@@ -7,6 +7,11 @@ import Sun from "@/components/Sun";
 import {getEndDate, getEndTime, getEndDateAndTime, getStartingDate} from "@/app/getDates";
 import {formatDateForSolarData} from "./helper.js"
 
+// CONTEXT FOR SCALING THE SUN
+// import graphHoverContext from "@/components/graphHoverBarContext.js";
+
+
+
 // DATE AND TIME VARIABLES
 let endTime = getEndTime()
 let startingTime = endTime
@@ -35,14 +40,13 @@ export default async function Home() {
   const solarDataDay = await Promise.all([dataDay])
   const solarDay = (solarDataDay[0].data)
   const daytimeDataDay = solarDay.filter(solardata=> patternNineToFive.test(solardata[1])) 
-  const daytimeDataBarWidthDay = 100/(daytimeDataDay.length) //ensures that the bars fill 99% of the width of the graph
   const peakMWDay= Math.max(...daytimeDataDay.map(solardata=>solardata[2]))
 
   // Weekly get solar data
   const dataWeek = getSolar(startingDateWeek, startingTime, endDateAndTime, endTime)
   const solarDataWeek = await Promise.all([dataWeek])
   const solarWeek = (solarDataWeek[0].data)
-  const daytimeDataWeek = solarWeek.filter(solardata=> patternNineToFive.test(solardata[1])) 
+  const daytimeDataWeek = solarWeek.filter(solardata=> patternNineToFive.test(solardata[1])).reverse() 
   const daytimeDataBarWidthWeek = 100/(daytimeDataWeek.length) //ensures that the bars fill 99% of the width of the graph
   const peakMWWeek= Math.max(...daytimeDataWeek.map(solardata=>solardata[2]))
   const peakMWWeekDayAndTime= formatDateForSolarData(daytimeDataWeek.find(solardata=>solardata[2]===peakMWWeek)[1])
@@ -51,7 +55,7 @@ export default async function Home() {
   const dataMonth = getSolar(startingDateMonth , startingTime, endDateAndTime, endTime)
   const solarDataMonth = await Promise.all([dataMonth])
   const solarMonth = (solarDataMonth[0].data)
-  const daytimeDataMonth = solarMonth.filter(solardata=> patternNineToFive.test(solardata[1])) 
+  const daytimeDataMonth = solarMonth.filter(solardata=> patternNineToFive.test(solardata[1])).reverse()
   const daytimeDataBarWidthMonth = 100/(daytimeDataMonth.length) //ensures that the bars fill 99% of the width of the graph
   const peakMWMonth= Math.max(...daytimeDataMonth.map(solardata=>solardata[2]))
   const peakMWMonthDayAndTime= formatDateForSolarData(daytimeDataMonth.find(solardata=>solardata[2]===peakMWMonth)[1])
@@ -61,17 +65,17 @@ export default async function Home() {
   const dataYear = getSolar(startingDateYear , startingTime, endDateAndTime, endTime)
   const solarDataYear = await Promise.all([dataYear])
   const solarYear = (solarDataYear[0].data)
-  const daytimeDataYear = solarYear.filter(solardata=> patternTwoPM.test(solardata[1])) 
+  const daytimeDataYear = solarYear.filter(solardata=> patternTwoPM.test(solardata[1])).reverse() 
   const daytimeDataBarWidthYear = 100/(daytimeDataYear.length) //ensures that the bars fill 99% of the width of the graph
   const peakMWYear= Math.max(...daytimeDataYear.map(solardata=>solardata[2]))
   const peakMWYearDayAndTime= formatDateForSolarData(daytimeDataYear.find(solardata=>solardata[2]===peakMWYear)[1])
 
   return (<>
-    <div className="backgroundImage -z-30"></div>
+    <div className="backgroundImage -z-30"></div> {/* This does not need to wrap the page, it just goes behind */}
     <div className="-z-20">
-      <Sun energyProduced={solarDay} peakMWDay={peakMWDay} peakMWWeek={peakMWWeek}/>
+      {/* <Sun energyProduced={solarDay} peakMWDay={peakMWDay} peakMWWeek={peakMWWeek}/> */}
     </div>
-    <div className='customContainer flex-col justify-between align-between text-sm'>
+    <div className='text-sm'>
     {/* TOP HALF OF PAGE */}
       <div className='flex justify-between p-8'>
         <SolarTitle />
@@ -80,8 +84,8 @@ export default async function Home() {
       </div>
       <div className="">
       </div>
-      <Graphs daytimeDataWeek={daytimeDataWeek} daytimeDataBarWidthWeek={daytimeDataBarWidthWeek} peakMWWeek={peakMWWeek} daytimeDataMonth={daytimeDataMonth} daytimeDataBarWidthMonth={daytimeDataBarWidthMonth} peakMWMonth={peakMWMonth} daytimeDataYear={daytimeDataYear} daytimeDataBarWidthYear={daytimeDataBarWidthYear} peakMWYear={peakMWYear} dayDate={dataDay} />
     </div> 
+      <Graphs peakMWDay={peakMWDay} daytimeDataWeek={daytimeDataWeek} daytimeDataBarWidthWeek={daytimeDataBarWidthWeek} peakMWWeek={peakMWWeek} daytimeDataMonth={daytimeDataMonth} daytimeDataBarWidthMonth={daytimeDataBarWidthMonth} peakMWMonth={peakMWMonth} daytimeDataYear={daytimeDataYear} daytimeDataBarWidthYear={daytimeDataBarWidthYear} peakMWYear={peakMWYear} dayDate={dataDay} />
   </>
   )
 }

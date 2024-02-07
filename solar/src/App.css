@@ -91,4 +91,7 @@
     margin-top: 70%;
     margin-right: 100%;
   }
+  .hide-when-portrait {
+    display: none
+  }
 }
