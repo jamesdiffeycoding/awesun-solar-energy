@@ -46,4 +46,6 @@ Solar data was fetched from the University of Sheffield's [solar PV API](https:/
 - How to code a graph component
 
 ## What's next for Awesun
-Further improving the graphic display, screen-size responsiveness, and sharing the project with the API's owners.
+- Further improving the graphic display,
+- Better screen-size responsiveness
+- Sharing the project with the API's owners.
