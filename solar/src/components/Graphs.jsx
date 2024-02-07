@@ -82,8 +82,8 @@ export default function Graphs({
 			<section className="w-full fixed bottom-0">
 				{/* GRAPH SELECTOR AND HOVERED STATISTICS */}
 				<div className="flex w-full justify-between pl-9 pr-9 fixed bottom-1/3 z-50">
-					<div className="text-slate-600">
-						<div><span className="hide-when-portrait text-white">Choose date range: </span></div>
+					<div className="text-slate-600 text-xs sm:text-xs md:text-base lg:text-base xl:text-base 2xl:text-base">
+						<div><span className="hide-when-portrait text-white ">Choose date range: </span></div>
 						<span onClick={handleDisplay} className={`cursor-pointer hover:text-white ${ graphToDisplay === "last week" ? "text-yellow-500 underline bg-slate-600 rounded-lg p-1" : "text-slate-600" }`} >
 							last week</span>{" "} /{" "}
 						<span onClick={handleDisplay} className={`cursor-pointer hover:text-white ${ graphToDisplay === "month" ? "text-yellow-500 underline  bg-slate-600 rounded-lg p-1" : "text-slate-600" }`} >
@@ -91,7 +91,7 @@ export default function Graphs({
 						<span onClick={handleDisplay} className={`cursor-pointer hover:text-white ${ graphToDisplay === "year" ? "text-yellow-500 underline  bg-slate-600 rounded-lg p-1" : "text-slate-600" }`} >
 							year</span>
 					</div>
-					<div className="text-right "><span className="text-xs sm:text-xs md:text-base lg:text-base xl:text-base 2xl:text-base">{barHoveredInformation} </span><p className="text-yellow-500 ">{barHovered}</p> </div>
+					<div className="text-right "><span className="text-xs sm:text-xs md:text-base lg:text-base xl:text-base 2xl:text-base">{barHoveredInformation} </span><p className="text-yellow-500 text-xs sm:text-xs md:text-base lg:text-base xl:text-base 2xl:text-base">{barHovered}</p> </div>
 				</div>
 				{/* GRAPH DISPLAY */}
 				{graphToDisplay === "last week" && (
