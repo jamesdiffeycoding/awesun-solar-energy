@@ -9,12 +9,13 @@ module.exports = {
     extend: {
       animation: {
         shine: 'shine 4s ease-in-out infinite',
-        slide: 'slide 5s ease-in-out'
+        slide: 'slide 0.5s ease-out', // name: slide duration: 0.5seconds ease-in: animation starts slowly, then speeds up. ease-out: starts fast, slows down
       },
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      keyframes: { 
+        slide: {
+          '0%': { transform: 'translateY(100%)' }, // animation starts with element off-screen at the bottom
+          '100%': { transform: 'translateY(0)' }, // animation ends with element in its normal position
+        },
       },
     },
   },

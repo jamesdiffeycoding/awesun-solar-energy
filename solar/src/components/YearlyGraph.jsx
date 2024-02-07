@@ -7,7 +7,7 @@ export default function YearlyGraph({daytimeDataYear, daytimeDataBarWidthYear, p
     <>
       {/* YEAR CONTAINER  */}
       <section className="fixed bottom-0 w-full">
-        <div className="graph" key="graph2">
+        <div className="graph animate-slide" key="graph2">
           {daytimeDataYear.map((dataPoint, index) => (
             (
               <React.Fragment key={`${index}-frag`} >

@@ -9,7 +9,7 @@ export default function MonthlyGraph({daytimeDataMonth, daytimeDataBarWidthMonth
         <>
         {/* MONTH CONTAINER */}
         <section className="fixed bottom-0 w-full">
-            <div className="graph" key="graph">
+            <div className="graph animate-slide" key="graph">
             {daytimeDataMonth.map((dataPoint, index) => (dataPoint[1].includes("09:00:00")) ? (
                 <React.Fragment key={`${index}-frag`}>
                     <div className="verticalstrip" key={index}>
