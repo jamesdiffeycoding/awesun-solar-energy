@@ -91,7 +91,7 @@ export default function Graphs({
 						<span onClick={handleDisplay} className={`cursor-pointer hover:text-white ${ graphToDisplay === "year" ? "text-yellow-500 underline  bg-slate-600 rounded-lg p-1" : "text-slate-600" }`} >
 							year</span>
 					</div>
-					<div className="text-right "><span className="text-slate-600 text-xs sm:text-xs md:text-base lg:text-base xl:text-base 2xl:text-base">{barHoveredInformation} </span><p className="text-yellow-500 text-xs sm:text-xs md:text-base lg:text-base xl:text-base 2xl:text-base">{barHovered}</p> </div>
+					<div className="text-right "><span className="text-slate-600 text-xs sm:text-xs md:text-base lg:text-base xl:text-base 2xl:text-base">{barHoveredInformation} </span><p className="text-yellow-700 text-xs sm:text-xs md:text-base lg:text-base xl:text-base 2xl:text-base">{barHovered}</p> </div>
 				</div>
 				{/* GRAPH DISPLAY */}
 				{graphToDisplay === "last week" && (
