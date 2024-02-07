@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react"
 import React from "react"
+import { formatDateToGetNumberAndMonthOnly } from "../app/helper.js"
 
 export default function MonthlyGraph({daytimeDataMonth, daytimeDataBarWidthMonth, peakMWMonth, updateBarContext}) {
     const breakPoints = ["01T", "08T", "15T", "22T", "29T"]
@@ -13,7 +14,8 @@ export default function MonthlyGraph({daytimeDataMonth, daytimeDataBarWidthMonth
             {daytimeDataMonth.map((dataPoint, index) => (dataPoint[1].includes("09:00:00")) ? (
                 <React.Fragment key={`${index}-frag`}>
                     <div className="verticalstrip" key={index}>
-                        {index % 7 === 0 && <div className="break" key={`${index}-break`}></div>}
+                        {index % 7 === 0 && <div className="break flex flex-col-reverse" key={`${index}-break`} ><div className="pl-2">{formatDateToGetNumberAndMonthOnly(dataPoint[1])}</div></div>
+}
                     </div>
                     <div className="verticalstrip" key={`${index}-strip`} style={{ width: `${daytimeDataBarWidthMonth}%` }}  onMouseEnter={function () {updateBarContext(dataPoint)}}>
                     <div className="w-full bg-green-800 rounded-t-lg bg-gradient-to-b from-green-800 to-green-600" key={`${index}-bar`} style={{ height:  `${98*dataPoint[2]/peakMWMonth}%`  }}></div>
