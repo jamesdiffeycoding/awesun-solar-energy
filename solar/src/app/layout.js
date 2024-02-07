@@ -6,6 +6,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Awesun Solar Visualiser",
   description: "Visualising UK solar energy power production",
+  icons: {
+    icon: '../favicon.ico', // /public path
+  },
 };
 
 export default function RootLayout({ children }) {
