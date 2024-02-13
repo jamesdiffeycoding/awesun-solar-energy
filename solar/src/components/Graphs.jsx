@@ -28,7 +28,9 @@ export default function Graphs({
 	const [barHoveredInformation, setBarHoveredInformation] = useState("Hover below to see");
 	const [barHovered, setBarHovered] = useState("data");	
 	
-	const [sunSizeState, setSunSizeState] = useState(100);
+	const [sunSizeState, setSunSizeState] = useState(60);
+	const [cloudPositionState, setCloudPositionState] = useState(0);
+	const [cloudOpacityState, setCloudOpacityState] = useState(0);
 
 	function updateBarContext(newValue) {
 		let peakMWForComparison = 0;
@@ -42,8 +44,9 @@ export default function Graphs({
 		// PRODUCTION NUMBER
 		let newValueRounded = Math.ceil(newValue[2]);
 		setBarHovered(newValueRounded + " MW")
-		setSunSizeState (sunSizeState => newValueRounded / peakMWForComparison * 100);
-
+		setSunSizeState (sunSizeState => 20 + newValueRounded / peakMWForComparison * 80);
+		setCloudPositionState(cloudPositionState => -20 + newValueRounded / peakMWForComparison * 20);
+		setCloudOpacityState(cloudOpacityState => 100 - newValueRounded / peakMWForComparison * 100);
 		// DATE AND TIME INFORMATION USING HELPER.JS IMPORTED FUNCTIONS
 		let formattedInformation = formatDateForSolarData(newValue[1]);
 		let timeHalfHourLater = getTimeHalfHourLater(newValue[1]);
@@ -74,6 +77,31 @@ export default function Graphs({
 					<div className=""></div>
 					<div className=""></div>
 					<div className=""></div>
+				</div>
+				<div>
+				</div> 		
+			{/* CLOUD GRID */}
+			<div className="cloudGrid grid absolute w-screen h-screen top-0">
+					{/* placeholder 2 grid items  */}
+						<div className=""></div>
+						<div className=""></div>
+					{/*  item 3, CLOUD 1  */}
+						<div className="">
+							<img src="./clouds2.png" alt="cloud" style={{width: '200%', height: 'auto', position: 'relative', opacity: `${cloudOpacityState}%`, right: `${cloudPositionState}%`, transition: 'right 1s ease, opacity 1s ease'}} />
+						</div>
+						{/* <div className = "flex text-center justify-center items-center w-full">
+							<div className="heroContainer pb-square h-full flex justify-center items-center aspect-square">
+							<div className="largestSquare w-full h-full aspect-square flex justify-center items-center"
+									style={{height: `${sunSizeState}%`, width: `${sunSizeState}%`, transition: 'width 1s ease, height 1s ease'}}>
+									<div className= "sunCircle bg-slate-800 w-full h-full z-30 aspect-square"></div>
+							</div>
+							</div>
+						</div> */}
+					{/*  item 4, CLOUD 2  */}
+						<div className="">
+							<img src="./clouds4.png" alt="cloud" style={{position: 'relative', opacity: `${cloudOpacityState}%`, left: `${cloudPositionState}%`, transition: 'left 1s ease, opacity 1s ease'}} />
+						</div>
+	
 				</div>
 				<div>
 				</div> 		
