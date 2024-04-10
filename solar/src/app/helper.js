@@ -20,7 +20,6 @@ async function getSolar(startingDate, startingTime, EndDate, EndTime) {
 
 export function formatDateForSolarData(dateString) {
   const date = new Date(dateString);
-  
   const options = { 
     weekday: 'short', 
     day: 'numeric', 
