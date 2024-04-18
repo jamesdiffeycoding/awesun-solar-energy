@@ -20,7 +20,7 @@ Responsive sizing, overcoming the CORS errors, sorting through a huge amount of 
 ## What we learned
 Overcoming CORS errors when you don't have own the server can be a challenge. Proxy servers are one common solution to these errors.
 
-## What's next for Awesun
+## What's next for Awesun!
 Further improving the graphic display, screen-size responsiveness, and sharing the project with the API's owners.
 
 ## Built with
