@@ -26,7 +26,6 @@ Further improving the graphic display, screen-size responsiveness, and sharing t
 ## Built with
 React, Next JS, the University of Sheffield's [solar PV API](https://docs.google.com/document/d/e/2PACX-1vSDFb-6dJ2kIFZnsl-pBQvcH4inNQCA4lYL9cwo80bEHQeTK8fONLOgDf6Wm4ze_fxonqK3EVBVoAIz/pub), server-side rendering.
 
-
 ## Try it out
 [Awesun Deployment](https://awesun-solar-visualiser.vercel.app/)
 
