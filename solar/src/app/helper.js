@@ -2,7 +2,7 @@ async function getSolar(startingDate, startingTime, EndDate, EndTime) {
   try {
     const res = await fetch(
       `https://api.solar.sheffield.ac.uk/pvlive/api/v4/pes/0?start=${startingDate}T${startingTime}&end=${EndDate}T${EndTime}`,
-      { cache: 'no-store' }
+      {next: { revalidate: 10 }}
     );
 
     if (!res.ok) {
