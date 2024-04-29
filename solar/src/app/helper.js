@@ -1,5 +1,6 @@
 async function getSolar(startingDate, startingTime, EndDate, EndTime) {
   try {
+    const timestamp = Date.parse(new Date().toString());a
     const res = await fetch(
       `https://api.solar.sheffield.ac.uk/pvlive/api/v4/pes/0?start=${startingDate}T${startingTime}&end=${EndDate}T${EndTime}tid=${timestamp}`,
       // {next: { revalidate: 10 }}
