@@ -38,6 +38,8 @@ async function getSolar(startingDate, startingTime, EndDate, EndTime) {
 // HELPER FUNCTIONS
 
 export default async function Home() {
+  // Timestamp
+  const timestamp = Date.parse(new Date().toString());
 
 
   // Helper
@@ -89,7 +91,7 @@ export default async function Home() {
         <SolarData peakMWWeek={peakMWWeek} peakMWWeekDayAndTime={peakMWWeekDayAndTime} peakMWMonth={peakMWMonth} peakMWMonthDayAndTime={peakMWMonthDayAndTime} 
         peakMWYear={peakMWYear} peakMWYearDayAndTime={peakMWYearDayAndTime}/>
       </div>
-      <div className="">
+      <div className="text-xs">Fetch code: {timestamp}
       </div>
     </div> 
       <Graphs peakMWDay={peakMWDay} daytimeDataWeek={daytimeDataWeek} daytimeDataBarWidthWeek={daytimeDataBarWidthWeek} peakMWWeek={peakMWWeek} daytimeDataMonth={daytimeDataMonth} daytimeDataBarWidthMonth={daytimeDataBarWidthMonth} peakMWMonth={peakMWMonth} daytimeDataYear={daytimeDataYear} daytimeDataBarWidthYear={daytimeDataBarWidthYear} peakMWYear={peakMWYear} dayDate={dataDay} />
