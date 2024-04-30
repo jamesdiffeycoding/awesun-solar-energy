@@ -1,26 +1,3 @@
-async function getSolar(startingDate, startingTime, EndDate, EndTime) {
-  try {
-    const timestamp = Date.parse(new Date().toString());a
-    const res = await fetch(
-      `https://api.solar.sheffield.ac.uk/pvlive/api/v4/pes/0?start=${startingDate}T${startingTime}&end=${EndDate}T${EndTime}tid=${timestamp}`,
-      // {next: { revalidate: 10 }}
-      { cache: 'no-store' }
-    );
-
-    if (!res.ok) {
-      console.error('API Error:', res.status);
-      throw new Error(`API Error: ${res.status}`);
-    }
-
-    const data = await res.json();
-    console.log('API Response:', data);
-    return data;
-  } catch (error) {
-    console.error('Error fetching solar data:', error);
-    throw error;
-  }
-}
-
 export function formatDateForSolarData(dateString) {
   const date = new Date(dateString);
   const options = { 

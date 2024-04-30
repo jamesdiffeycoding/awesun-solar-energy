@@ -28,7 +28,8 @@ async function getSolar(startingDate, startingTime, EndDate, EndTime) {
   const res = await fetch(apiUrl, {
     headers: {
       'Cache-Control': 'no-cache'
-    }
+    },
+    cache: 'no-store'
   });
 
   return res.json();
