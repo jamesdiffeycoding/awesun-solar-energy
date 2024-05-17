@@ -4,12 +4,10 @@ import MonthlyGraph from "./MonthlyGraph.jsx";
 import YearlyGraph from "./YearlyGraph.jsx";
 import { useState, useEffect } from "react";
 import { formatDateForSolarData, getTimeHalfHourLater} from "@/app/helper.js";
-// STYLES
 import "../App.css";
 
 
 export default function Graphs({
-	peakMWDay,
 	daytimeDataWeek,
 	daytimeDataBarWidthWeek,
 	peakMWWeek,

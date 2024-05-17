@@ -2,15 +2,10 @@
 import SolarData from "@/components/SolarData";
 import SolarTitle from "@/components/SolarTitle";
 import Graphs from "@/components/Graphs";
-import Sun from "@/components/Sun";
+
 // HELPER FUNCTIONS
 import {getEndDate, getEndTime, getEndDateAndTime, getStartingDate} from "@/app/getDates";
 import {formatDateForSolarData} from "./helper.js"
-
-// CONTEXT FOR SCALING THE SUN
-// import graphHoverContext from "@/components/graphHoverBarContext.js";
-
-
 
 // DATE AND TIME VARIABLES
 let endTime = getEndTime()
@@ -79,23 +74,15 @@ export default async function Home() {
   const daytimeDataBarWidthYear = 100/(daytimeDataYear.length) //ensures that the bars fill 99% of the width of the graph
   const peakMWYear= Math.max(...daytimeDataYear.map(solardata=>solardata[2]))
   const peakMWYearDayAndTime= formatDateForSolarData(daytimeDataYear.find(solardata=>solardata[2]===peakMWYear)[1])
-
-  return (<>
+  console.log(daytimeDataWeek[daytimeDataWeek.length-1])
+return (<>
     <div className="backgroundImage -z-30"></div> {/* This does not need to wrap the page, it just goes behind */}
-    <div className="-z-20">
-      {/* <Sun energyProduced={solarDay} peakMWDay={peakMWDay} peakMWWeek={peakMWWeek}/> */}
+    <div className='flex justify-between p-8 text-sm'>
+      <SolarTitle />
+      <SolarData peakMWWeek={peakMWWeek} peakMWWeekDayAndTime={peakMWWeekDayAndTime} peakMWMonth={peakMWMonth} peakMWMonthDayAndTime={peakMWMonthDayAndTime} 
+      peakMWYear={peakMWYear} peakMWYearDayAndTime={peakMWYearDayAndTime}/>
     </div>
-    <div className='text-sm'>
-    {/* TOP HALF OF PAGE */}
-      <div className='flex justify-between p-8'>
-        <SolarTitle />
-        <SolarData peakMWWeek={peakMWWeek} peakMWWeekDayAndTime={peakMWWeekDayAndTime} peakMWMonth={peakMWMonth} peakMWMonthDayAndTime={peakMWMonthDayAndTime} 
-        peakMWYear={peakMWYear} peakMWYearDayAndTime={peakMWYearDayAndTime}/>
-      </div>
-      <div className="text-xs">
-      </div>
-    </div> 
-      <Graphs peakMWDay={peakMWDay} daytimeDataWeek={daytimeDataWeek} daytimeDataBarWidthWeek={daytimeDataBarWidthWeek} peakMWWeek={peakMWWeek} daytimeDataMonth={daytimeDataMonth} daytimeDataBarWidthMonth={daytimeDataBarWidthMonth} peakMWMonth={peakMWMonth} daytimeDataYear={daytimeDataYear} daytimeDataBarWidthYear={daytimeDataBarWidthYear} peakMWYear={peakMWYear} dayDate={dataDay} />
+    <Graphs daytimeDataWeek={daytimeDataWeek} daytimeDataBarWidthWeek={daytimeDataBarWidthWeek} peakMWWeek={peakMWWeek} daytimeDataMonth={daytimeDataMonth} daytimeDataBarWidthMonth={daytimeDataBarWidthMonth} peakMWMonth={peakMWMonth} daytimeDataYear={daytimeDataYear} daytimeDataBarWidthYear={daytimeDataBarWidthYear} peakMWYear={peakMWYear} dayDate={dataDay} />
   </>
   )
 }
