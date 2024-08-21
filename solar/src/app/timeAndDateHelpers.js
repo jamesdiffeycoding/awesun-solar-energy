@@ -1,14 +1,14 @@
-export function formatDateForSolarData(dateString) {
+export function formatDateForDisplay(dateString) {
   const date = new Date(dateString);
-  const options = { 
-    weekday: 'short', 
-    day: 'numeric', 
+  const options = {
+    weekday: 'short',
+    day: 'numeric',
     month: 'short',
     hour: 'numeric',
     minute: 'numeric',
     hour12: false //shows the AM or PM, 15:00 instead of 3:00 PM
   };
-  
+
   const formattedDate = date.toLocaleString('en-US', options);
   return ` ${formattedDate}`;
 }
@@ -17,9 +17,9 @@ function getDaySuffix(day) {
   if (day >= 11 && day <= 13) {
     return 'th';
   }
-  
+
   const lastDigit = day % 10;
-  
+
   switch (lastDigit) {
     case 1:
       return 'st';
@@ -40,8 +40,7 @@ function getDaySuffix(day) {
 export function getTimeHalfHourLater(dateString) {
   const date = new Date(dateString);
   date.setMinutes(date.getMinutes() + 30);
-
-  const options = { 
+  const options = {
     hour: 'numeric',
     minute: 'numeric',
     hour12: false //shows the AM or PM, 15:00 instead of 3:00 PM
@@ -53,9 +52,8 @@ export function getTimeHalfHourLater(dateString) {
 
 export function formatDateToGetDayOnly(dateString) {
   const date = new Date(dateString);
-  
-  const options = { 
-    weekday: 'short', 
+  const options = {
+    weekday: 'short',
     hour12: false //shows the AM or PM, 15:00 instead of 3:00 PM
   };
   const formattedDate = date.toLocaleString('en-US', options);
@@ -64,10 +62,10 @@ export function formatDateToGetDayOnly(dateString) {
 
 export function formatDateToGetNumberAndMonthOnly(dateString) {
   const date = new Date(dateString);
-  
-  const options = { 
+
+  const options = {
     // weekday: 'short', 
-    day: 'numeric', 
+    day: 'numeric',
     month: 'numeric',
     hour12: false //shows the AM or PM, 15:00 instead of 3:00 PM
   };
@@ -80,8 +78,8 @@ export function formatDateToGetNumberAndMonthOnly(dateString) {
 
 export function formatDateToGetMonthOnly(dateString) {
   const date = new Date(dateString);
-  
-  const options = { 
+
+  const options = {
     // weekday: 'short', 
     month: 'short',
     hour12: false //shows the AM or PM, 15:00 instead of 3:00 PM
@@ -89,4 +87,48 @@ export function formatDateToGetMonthOnly(dateString) {
 
   const formattedDate = date.toLocaleString('en-US', options);
   return ` ${formattedDate}`;
+}
+
+
+export function getEndDate() {
+  console.log("GetEndDate called")
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`
+}
+
+export function getEndTime() {
+  console.log("GetEndTime called")
+  const now = new Date();
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const seconds = String(now.getSeconds()).padStart(2, '0');
+  return `${hours}:${minutes}:${seconds}`
+}
+
+
+export function getEndDateAndTime() {
+  console.log("GetEndDateAndTime called")
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const seconds = String(now.getSeconds()).padStart(2, '0');
+  return `${year}-${month}-${day}-${hours}-${minutes}-${seconds}`
+}
+
+
+export function getStartingDate(numberOfDays) {
+  console.log("GetStartingDate called")
+  let EndDate = getEndDate();
+  const dateObject = new Date(EndDate);
+  dateObject.setDate(dateObject.getDate() - numberOfDays);
+  const year = dateObject.getFullYear();
+  const month = String(dateObject.getMonth() + 1).padStart(2, '0');
+  const day = String(dateObject.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`
 }

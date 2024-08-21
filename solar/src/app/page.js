@@ -3,15 +3,11 @@ import SolarData from "@/components/SolarData";
 import SolarTitle from "@/components/SolarTitle";
 import Graphs from "@/components/Graphs";
 
-// HELPER FUNCTIONS
-import { getEndDate, getEndTime, getEndDateAndTime, getStartingDate } from "@/app/getDates";
-import { formatDateForSolarData } from "./helper.js"
-
 // DATE AND TIME VARIABLES
+import { formatDateForDisplay, getEndTime, getEndDateAndTime, getStartingDate } from "./timeAndDateHelpers.js"
 let endTime = getEndTime()
 let startingTime = endTime
 let endDateAndTime = getEndDateAndTime()
-let startingDateDay = getStartingDate(0)
 let startingDateWeek = getStartingDate(7)
 let startingDateMonth = getStartingDate(31)
 let startingDateYear = getStartingDate(365)
@@ -19,66 +15,59 @@ let startingDateYear = getStartingDate(365)
 // SOLAR FETCH
 async function getSolar(startingDate, startingTime, EndDate, EndTime) {
   const apiUrl = `https://api.solar.sheffield.ac.uk/pvlive/api/v4/pes/0?start=${startingDate}T${startingTime}&end=${EndDate}T${EndTime}`;
-
   const res = await fetch(apiUrl, {
     headers: {
       'Cache-Control': 'no-cache'
     },
     cache: 'no-store'
   });
-
   return res.json();
 }
-// 
 
-// HELPER FUNCTIONS
 
 export default async function Home() {
-  // Timestamp
-  const timestamp = Date.parse(new Date().toString());
+  // DATA FETCHES AND FILTERING
+  const RegExNineToFive = /^(\d{4}-\d{2}-\d{2}T(?:0[9]|1[0-6]):[0-5]\d:00Z)$/;
+  const RegExPM = /^(\d{4}-\d{2}-\d{2}T14:00:00Z)$/;
+
+  const daytimeDataWeek = (await Promise.all([getSolar(startingDateWeek, startingTime, endDateAndTime, endTime)]))[0].data
+    .filter(data => RegExNineToFive.test(data[1]))
+    .reverse();
+  const daytimeDataMonth = (await Promise.all([getSolar(startingDateMonth, startingTime, endDateAndTime, endTime)]))[0].data
+    .filter(data => RegExNineToFive.test(data[1]))
+    .reverse();
+  const daytimeDataYear = (await Promise.all([getSolar(startingDateYear, startingTime, endDateAndTime, endTime)]))[0].data
+    .filter(data => RegExNineToFive.test(data[1]))
+    .reverse();
+  const PMDataYear = daytimeDataYear.filter(data => RegExPM.test(data[1]));
 
 
-  // Helper
-  const patternNineToFive = /^(\d{4}-\d{2}-\d{2}T(?:0[9]|1[0-6]):[0-5]\d:00Z)$/;
-  // Daily get solar data
-  const dataDay = getSolar(startingDateDay, "00:00:00", endDateAndTime, endTime)
 
-  // Weekly get solar data
-  const dataWeek = getSolar(startingDateWeek, startingTime, endDateAndTime, endTime)
-  const solarDataWeek = await Promise.all([dataWeek])
-  const solarWeek = (solarDataWeek[0].data)
-  const daytimeDataWeek = solarWeek.filter(solardata => patternNineToFive.test(solardata[1])).reverse()
-  const daytimeDataBarWidthWeek = 100 / (daytimeDataWeek.length) //ensures that the bars fill 99% of the width of the graph
-  const peakMWWeek = Math.max(...daytimeDataWeek.map(solardata => solardata[2]))
-  const peakMWWeekDayAndTime = formatDateForSolarData(daytimeDataWeek.find(solardata => solardata[2] === peakMWWeek)[1])
+  // PEAK DATA
+  const peakFromWeek = Math.max(...daytimeDataWeek.map(data => data[2]))
+  const peakFromWeekDayAndTime = formatDateForDisplay(daytimeDataWeek.find(data => data[2] === peakFromWeek)[1])
+  const peakFromMonth = Math.max(...daytimeDataMonth.map(data => data[2]))
+  const peakFromMonthDayAndTime = formatDateForDisplay(daytimeDataMonth.find(data => data[2] === peakFromMonth)[1])
+  const peakFromYear = Math.max(...daytimeDataYear.map(solardata => solardata[2]))
+  const peakFromYearDayAndTime = formatDateForDisplay(daytimeDataYear.find(solardata => solardata[2] === peakFromYear)[1])
 
-  // Monthly get solar data
-  const dataMonth = getSolar(startingDateMonth, startingTime, endDateAndTime, endTime)
-  const solarDataMonth = await Promise.all([dataMonth])
-  const solarMonth = (solarDataMonth[0].data)
-  const daytimeDataMonth = solarMonth.filter(solardata => patternNineToFive.test(solardata[1])).reverse()
-  const daytimeDataBarWidthMonth = 100 / (daytimeDataMonth.length) //ensures that the bars fill 99% of the width of the graph
-  const peakMWMonth = Math.max(...daytimeDataMonth.map(solardata => solardata[2]))
-  const peakMWMonthDayAndTime = formatDateForSolarData(daytimeDataMonth.find(solardata => solardata[2] === peakMWMonth)[1])
+  const peakData = {
+    peakFromWeek,
+    peakFromWeekDayAndTime,
+    peakFromMonth,
+    peakFromMonthDayAndTime,
+    peakFromYear,
+    peakFromYearDayAndTime
+  }
 
-  // Annual get solar data
-  const patternTwoPM = /^(\d{4}-\d{2}-\d{2}T14:00:00Z)$/;
-  const dataYear = getSolar(startingDateYear, startingTime, endDateAndTime, endTime)
-  const solarDataYear = await Promise.all([dataYear])
-  const solarYear = (solarDataYear[0].data)
-  const daytimeDataYear = solarYear.filter(solardata => patternTwoPM.test(solardata[1])).reverse()
-  const daytimeDataBarWidthYear = 100 / (daytimeDataYear.length) //ensures that the bars fill 99% of the width of the graph
-  const peakMWYear = Math.max(...daytimeDataYear.map(solardata => solardata[2]))
-  const peakMWYearDayAndTime = formatDateForSolarData(daytimeDataYear.find(solardata => solardata[2] === peakMWYear)[1])
-  console.log(daytimeDataWeek[daytimeDataWeek.length - 1])
+
   return (<>
     <div className="backgroundImage -z-30"></div> {/* This does not need to wrap the page, it just goes behind */}
-    <div className='flex justify-between p-8 text-sm bg-transparent'>
+    <div className='flex justify-between p-8 text-sm'>
       <SolarTitle />
-      <SolarData peakMWWeek={peakMWWeek} peakMWWeekDayAndTime={peakMWWeekDayAndTime} peakMWMonth={peakMWMonth} peakMWMonthDayAndTime={peakMWMonthDayAndTime}
-        peakMWYear={peakMWYear} peakMWYearDayAndTime={peakMWYearDayAndTime} />
+      <SolarData peakData={peakData} />
     </div>
-    <Graphs daytimeDataWeek={daytimeDataWeek} daytimeDataBarWidthWeek={daytimeDataBarWidthWeek} peakMWWeek={peakMWWeek} daytimeDataMonth={daytimeDataMonth} daytimeDataBarWidthMonth={daytimeDataBarWidthMonth} peakMWMonth={peakMWMonth} daytimeDataYear={daytimeDataYear} daytimeDataBarWidthYear={daytimeDataBarWidthYear} peakMWYear={peakMWYear} dayDate={dataDay} />
+    <Graphs daytimeDataWeek={daytimeDataWeek} peakFromWeek={peakFromWeek} daytimeDataMonth={daytimeDataMonth} peakFromMonth={peakFromMonth} PMDataYear={PMDataYear} peakFromYear={peakFromYear} />
   </>
   )
 }
