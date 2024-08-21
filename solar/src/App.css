@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 * {
   color: white;
 }
@@ -12,7 +11,13 @@
   height: 100vh;
   width: 100vw;
   margin: 0;
-  background-image: linear-gradient(-179deg, rgb(0, 90, 107) 0px, rgb(0, 135, 160) 26%, rgb(51, 195, 221) 57%, rgb(153, 225, 238) 100%)
+  background-image: linear-gradient(
+    -179deg,
+    rgb(0, 90, 107) 0px,
+    rgb(0, 135, 160) 26%,
+    rgb(51, 195, 221) 57%,
+    rgb(153, 225, 238) 100%
+  );
 }
 
 .customContainer {
@@ -37,7 +42,7 @@
   min-height: 100px;
 }
 
-.verticalstrip {
+.vertical-rectangle {
   display: flex;
   height: 100%;
   align-items: flex-end;
@@ -57,7 +62,7 @@
   height: 100%;
 }
 
-.verticalstrip:hover {
+.vertical-rectangle:hover {
   background-color: rgb(255, 182, 80) !important;
 }
 
@@ -81,13 +86,10 @@
   grid-template-rows: 35% 60%;
 }
 
-
 @keyframes shine {
   50% {
-    box-shadow: 0 0 20px rgb(255, 220, 114),
-      0 0 50px rgb(255, 220, 114),
-      0 0 80px rgb(255, 220, 114),
-      0 0 120px rgb(255, 220, 114);
+    box-shadow: 0 0 20px rgb(255, 220, 114), 0 0 50px rgb(255, 220, 114),
+      0 0 80px rgb(255, 220, 114), 0 0 120px rgb(255, 220, 114);
   }
 }
 
@@ -99,7 +101,6 @@
 }
 
 @media (orientation: portrait) {
-
   .sunGrid .heroContainer .largestSquare {
     width: 100%;
     height: 50%;
@@ -108,7 +109,7 @@
   }
 
   .hide-when-portrait {
-    display: none
+    display: none;
   }
 
   .cloudGrid {

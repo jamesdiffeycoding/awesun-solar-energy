@@ -1,7 +1,7 @@
 // COMPONENTS
 import SolarData from "@/components/SolarData";
 import SolarTitle from "@/components/SolarTitle";
-import Graphs from "@/components/Graphs";
+import GraphContainer from "@/components/GraphContainer.jsx";
 
 // DATE AND TIME VARIABLES
 import { formatDateForDisplay, getEndTime, getEndDateAndTime, getStartingDate } from "./timeAndDateHelpers.js"
@@ -67,7 +67,7 @@ export default async function Home() {
       <SolarTitle />
       <SolarData peakData={peakData} />
     </div>
-    <Graphs daytimeDataWeek={daytimeDataWeek} peakFromWeek={peakFromWeek} daytimeDataMonth={daytimeDataMonth} peakFromMonth={peakFromMonth} PMDataYear={PMDataYear} peakFromYear={peakFromYear} />
+    <GraphContainer dataWeek={daytimeDataWeek} dataMonth={daytimeDataMonth} dataYear={PMDataYear} peakData={peakData} />
   </>
   )
 }

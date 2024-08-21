@@ -11,7 +11,7 @@ module.exports = {
         shine: 'shine 4s ease-in-out infinite',
         slide: 'slide 0.5s ease-out', // name: slide duration: 0.5seconds ease-in: animation starts slowly, then speeds up. ease-out: starts fast, slows down
       },
-      keyframes: { 
+      keyframes: {
         slide: {
           '0%': { transform: 'translateY(100%)' }, // animation starts with element off-screen at the bottom
           '50%': { transform: 'translateY(75%)' },

@@ -13,24 +13,6 @@ export function formatDateForDisplay(dateString) {
   return ` ${formattedDate}`;
 }
 
-function getDaySuffix(day) {
-  if (day >= 11 && day <= 13) {
-    return 'th';
-  }
-
-  const lastDigit = day % 10;
-
-  switch (lastDigit) {
-    case 1:
-      return 'st';
-    case 2:
-      return 'nd';
-    case 3:
-      return 'rd';
-    default:
-      return 'th';
-  }
-}
 
 // Example usage
 // const dateString = "2024-02-26T12:30:00Z";
