@@ -4,29 +4,63 @@ import "../App.css";
 const Clouds = ({ cloudPositionState, cloudOpacityState }) => {
   return (
     <>
-      <section className="cloudGrid grid absolute w-screen h-screen top-0">
+      <section className="grid absolute w-screen h-screen top-0 overflow-hidden">
         <img
-          className="row-start-2"
-          src="./clouds-left.png"
+          className="row-start-2 moving-clouds"
+          src="./clouds-wide.png"
           alt="cloud"
           style={{
             width: "200%",
             height: "auto",
             position: "relative",
             opacity: `${cloudOpacityState}%`,
-            right: `${cloudPositionState}%`,
+            left: `0%`,
             transition: "right 1s ease, opacity 1s ease",
           }}
         />
+      </section>
+      <section className="grid absolute w-screen h-screen top-0 overflow-hidden">
         <img
-          className="row-start-2"
-          src="./clouds-right.png"
+          className="row-start-2 moving-clouds"
+          src="./clouds-wide.png"
           alt="cloud"
           style={{
+            width: "200%",
+            height: "auto",
             position: "relative",
             opacity: `${cloudOpacityState}%`,
-            left: `${cloudPositionState}%`,
-            transition: "left 1s ease, opacity 1s ease",
+            left: `100%`,
+            transition: "right 1s ease, opacity 1s ease",
+          }}
+        />
+      </section>
+      <section className="grid absolute w-screen h-screen top-0 overflow-hidden">
+        <img
+          className="row-start-2 moving-clouds"
+          src="./clouds-wide.png"
+          alt="cloud"
+          style={{
+            width: "200%",
+            height: "auto",
+            position: "relative",
+            opacity: `${cloudOpacityState}%`,
+            left: `-100%`,
+            transition: "right 1s ease, opacity 1s ease",
+          }}
+        />
+      </section>
+      <section className="grid absolute w-screen h-screen top-0 overflow-hidden">
+        <img
+          className="row-start-2 moving-clouds"
+          src="./clouds-wide.png"
+          alt="cloud"
+          style={{
+            width: "200%",
+            height: "auto",
+            position: "relative",
+            opacity: `${cloudOpacityState}%`,
+            left: `-200%`,
+            transition: "right 1s ease, opacity 1s ease",
           }}
         />
       </section>

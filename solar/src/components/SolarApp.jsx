@@ -20,8 +20,7 @@ export default function SolarApp({ allData }) {
   const { dataWeek, dataMonth, dataYear } = displayData;
   const { peakFromWeek, peakFromMonth, peakFromYear } = peakData;
   const [sunSize, setSunSize] = useState(60); // default size
-  const [cloudPositionState, setCloudPositionState] = useState(0);
-  const [cloudOpacityState, setCloudOpacityState] = useState(0);
+  const [cloudOpacityState, setCloudOpacityState] = useState(20);
 
   const [barHoveredInformation, setBarHoveredInformation] =
     useState("Hover below to see");
@@ -40,11 +39,8 @@ export default function SolarApp({ allData }) {
 
     let newValueRounded = Math.ceil(newValue[2]);
     setSunSize(20 + (newValueRounded / peakForComparison) * 80);
-    setCloudPositionState(
-      (prev) => -20 + (newValueRounded / peakForComparison) * 20
-    );
     setCloudOpacityState(
-      (prev) => 100 - (newValueRounded / peakForComparison) * 100
+      (prev) => 100 - (newValueRounded / peakForComparison) * 120
     );
     setBarHovered(`${newValueRounded} MW`);
     setBarHoveredInformation(
@@ -82,10 +78,7 @@ export default function SolarApp({ allData }) {
     <main>
       <Header peakData={peakData} />
       <Sun sunSize={sunSize} />
-      <Clouds
-        cloudOpacityState={cloudOpacityState}
-        cloudPositionState={cloudPositionState}
-      />
+      <Clouds cloudOpacityState={cloudOpacityState} />
       <section className="flex w-full justify-between pl-9 pr-9 fixed bottom-[37%] z-50">
         <GraphSelector
           graphToDisplay={graphToDisplay}

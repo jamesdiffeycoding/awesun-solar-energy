@@ -121,3 +121,26 @@
     display: none;
   }
 }
+
+@keyframes cloud-breeze {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+.image-container {
+  overflow: hidden; /* Ensure content outside the container is not visible */
+  position: relative;
+  width: 100%; /* Adjust width as needed */
+}
+
+.moving-clouds {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 200%; /* Double the width of the container to ensure seamless repeat */
+  animation: cloud-breeze 300s linear infinite; /* Adjust duration and easing as needed */
+}
