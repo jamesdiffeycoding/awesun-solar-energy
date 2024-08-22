@@ -8,7 +8,7 @@ export default function GraphContainer({
   labelFormatter,
   labelBreakTime,
   labelScheme,
-  updateBarContext,
+  handleBarHover,
 }) {
   const barWidth = `${100 / dataToDisplay.length}%`;
 
@@ -20,7 +20,7 @@ export default function GraphContainer({
   }
 
   return (
-    <section className="w-full animate-slide">
+    <section className="w-full animate-slide fixed bottom-0">
       <div className="graph" key="graph">
         {dataToDisplay.map((dataPoint, index) => {
           const isBreak = dataPoint[1].includes(labelBreakTime);
@@ -30,7 +30,7 @@ export default function GraphContainer({
             <React.Fragment key={`${index}-frag`}>
               <GraphTransparentBar
                 width={barWidth}
-                onMouseEnter={() => updateBarContext(dataPoint)}
+                onMouseEnter={() => handleBarHover(dataPoint)}
               >
                 {isBreak && shouldDisplayLabel(index, dataPoint[1]) && (
                   <GraphLabel value={labelFormatter(dataPoint[1])} />
