@@ -31,3 +31,7 @@ This project was built with React, Next JS and Tailwind CSS.
 - GRANDPARENT: Page.js (server-side fetch for data, passed as props to SolarApp)
 - PARENT: SolarApp (client side component with all state management and data passed down to child components)
 - CHILDREN: Header, Sun, Clouds, GraphSelector and Graph components (receive all props from SolarApp)
+
+# Suggest improvements
+
+If you have ideas for how to improve this work, please let me know at diffeyj@outlook.com.
