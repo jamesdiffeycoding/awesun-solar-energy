@@ -13,6 +13,8 @@ const Clouds = ({ cloudOpacityState }) => {
             height: "auto",
             position: "relative",
             opacity: `${cloudOpacityState}%`,
+            transition: "opacity 3s ease-in-out", // Transition for opacity
+
             left: `0%`,
           }}
         />
@@ -26,6 +28,8 @@ const Clouds = ({ cloudOpacityState }) => {
             height: "auto",
             position: "relative",
             opacity: `${cloudOpacityState}%`,
+            transition: "opacity 3s ease-in-out", // Transition for opacity
+
             left: `100%`,
           }}
         />
@@ -39,6 +43,8 @@ const Clouds = ({ cloudOpacityState }) => {
             height: "auto",
             position: "relative",
             opacity: `${cloudOpacityState}%`,
+            transition: "opacity 3s ease-in-out", // Transition for opacity
+
             left: `-100%`,
           }}
         />
@@ -52,6 +58,7 @@ const Clouds = ({ cloudOpacityState }) => {
             height: "auto",
             position: "relative",
             opacity: `${cloudOpacityState}%`,
+            transition: "opacity 3s ease-in-out", // Transition for opacity
             left: `-200%`,
           }}
         />
