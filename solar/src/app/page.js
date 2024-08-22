@@ -3,11 +3,14 @@ import SolarApp from "@/components/SolarApp.jsx";
 
 // DATE AND TIME VARIABLES
 import {
+  RegExNineToFive,
+  RegExPM,
   formatDateForDisplay,
   getEndTime,
   getEndDateAndTime,
   getStartingDate,
 } from "./timeAndDateHelpers.js";
+
 let endTime = getEndTime();
 let startingTime = endTime;
 let endDateAndTime = getEndDateAndTime();
@@ -29,9 +32,6 @@ async function getSolar(startingDate, startingTime, EndDate, EndTime) {
 
 export default async function Page() {
   // DATA FETCHES AND FILTERING
-  const RegExNineToFive = /^(\d{4}-\d{2}-\d{2}T(?:0[9]|1[0-6]):[0-5]\d:00Z)$/;
-  const RegExPM = /^(\d{4}-\d{2}-\d{2}T14:00:00Z)$/;
-
   const daytimeDataWeek = (
     await Promise.all([
       getSolar(startingDateWeek, startingTime, endDateAndTime, endTime),

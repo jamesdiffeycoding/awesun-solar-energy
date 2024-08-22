@@ -1,31 +1,33 @@
-# Awesun Solar Visualiser
+# [Awesun Solar Energy](https://awesun-solar-visualiser.vercel.app/)
 
-## Inspiration
-When someone plugs in their phone, or turns on their kettle, **where does that electricity come from**? 
+Researchers at the University of Sheffield host an [API](https://docs.google.com/document/d/e/2PACX-1vSDFb-6dJ2kIFZnsl-pBQvcH4inNQCA4lYL9cwo80bEHQeTK8fONLOgDf6Wm4ze_fxonqK3EVBVoAIz/pub) for current solar energy production data in the UK. I wanted to build a front-end tool to help people demonstrate the value and nature of solar energy using their data.
 
-It is easy to overlook the contribution renewable energy sources are make in the UK, and difficult to access the latest production statistics. I were inspired by **[Winderful UK's](https://winderful.uk/)** work to visualise the UK's wind energy production and I wanted to create a sister project.
+Awesun Solar Visualiser displays the latest solar PV generation statistics in half-hourly increments.
 
-## What it does
-Awesun Solar Energy Visualiser displays the latest solar PV generation statistics in half-hourly increments between the hours of 9am and 5pm. Three views are presented (weekly, monthly and yearly), as well as their peak production statistics for those periods. The size of the sun changes depending on how much energy has been produced on the current day, relative to the annual high.
+In the weekly and monthly views, production is displayed for 9AM-5PM. In the yearly view production is displayed for 2PM (which is when generation is usually greatest). Daylight savings time adjustments are ignored.
 
-## How I built it
-Solar data was fetched from the University of Sheffield's [solar PV API](https://docs.google.com/document/d/e/2PACX-1vSDFb-6dJ2kIFZnsl-pBQvcH4inNQCA4lYL9cwo80bEHQeTK8fONLOgDf6Wm4ze_fxonqK3EVBVoAIz/pub). To bypass CORS errors, I used Next JS server-side-rendering. The data was filtered to entries betIen 9am and 5pm to display only typical solar production hours. Client components were used to toggle states of the web-page, for instance to change which graph to display. The application accepts user input for which graph they want to display.
+The sun and clouds are both animated and adjusted dynamically to the size of the last data bar hovered. Cloudy days with little sun correspond to low solar energy generation, while clear days with considerable sunlight correspond to high solar energy generation.
 
-## Challenges I ran into
-The API returns CORS errors when accessed directly from a client browser, so server-side rendering was used to bypass this. Because I don't have access to the server myself (it is hosted by University of Sheffield), server-side rendering was the best way around the CORS errors.
+# Technical considerations
 
-## Accomplishments that I'm proud of
-Responsive sizing, overcoming the CORS errors, sorting through a huge amount of data, learning about regular expressions, and creating reusable code blocks.
+This project was built with React, Next JS and Tailwind CSS.
 
-## What I learned
-Overcoming CORS errors when you don't have own the server can be a challenge. Proxy servers are one common solution to these errors.
+- React's useState hook and prop sharing between components facilitate clean animation effects.
+- The Page.js file manages all server-side code: fetching the data from the API. This reduces the load on the client and helps to bypass CORS errors which can arise from client-side fetches.
+- A single fetch request for a year's worth of data is made to the API which is then filtered to provide weekly and monthly views (rather than making 3 separate requests to the server).
+- The SolarApp component manages all client-side state management and event handling (e.g. effects triggered when the graph chosen changes or data bars are hovered).
+- Code has been simplified as much as possible reducing prop-drilling and creating neatly organised or nested components for readability.
+- Absolute positioning ensures a consistent presentation of the graph elements at the base of the page.
+- Accessibility has been preserved through font-colours chosen for contrast with the background gradient.
+- Responsiveness has been designed-in with various UI features that change visibility or position depending on screen size.
 
-## What's next for Awesun!
-Further improving the graphic display, screen-size responsiveness, and sharing the project with the API's owners.
+# Other design decisions
 
-## Built with
-React, Next JS, the University of Sheffield's [solar PV API](https://docs.google.com/document/d/e/2PACX-1vSDFb-6dJ2kIFZnsl-pBQvcH4inNQCA4lYL9cwo80bEHQeTK8fONLOgDf6Wm4ze_fxonqK3EVBVoAIz/pub), server-side rendering.
+- A useEffect hook could have been used for updating the sunSize state and cloudOpacity state when the last 'barHovered' changed. However, I found this not to be necessary and only cluttered the codebase.
+- A useContext hook could have been used for sharing the fetched data among components. Usually this helps to avoid the clutter created by deep prop-drilling. However, I found this not to be necessary as I managed to organise the code into just 'three generations' - as shown in the component structure below.
 
-## Try it out
-[Awesun Deployment](https://awesun-solar-visualiser.vercel.app/)
+# Component structure
 
+- GRANDPARENT: Page.js (server-side fetch for data, passed as props to SolarApp)
+- PARENT: SolarApp (client side component with all state management and data passed down to child components)
+- CHILDREN: Header, Sun, Clouds, GraphSelector and Graph components (receive all props from SolarApp)
