@@ -32,31 +32,31 @@ export default function Header({ peakData }) {
       <section className="text-right">
         <div>
           <div className="pt-1 pb-1 underline underline-offset-8">
-            Latest <span className="hide-when-portrait">production</span> peaks
+            Recent peak production{" "}
           </div>
           <div className="pt-1">
+            7 days:
             <span className="text-yellow-500">
-              {peakFromWeek.toFixed(0)} MW
+              {` ${peakFromWeek.toFixed(0)}`} MW
             </span>{" "}
-            week.
           </div>
           <div className="supersmalltext text-slate-900">
             {peakFromWeekDayAndTime}-{endOfPeakWindowWeek}
           </div>
           <div className="pt-1">
+            30 days:
             <span className="text-yellow-500">
-              {peakFromMonth.toFixed(0)} MW
+              {` ${peakFromMonth.toFixed(0)}`} MW
             </span>{" "}
-            last month.
           </div>
           <div className="supersmalltext text-slate-900">
             {peakFromMonthDayAndTime}-{endOfPeakWindowMonth}
           </div>
           <div className="pt-1">
+            365 days:
             <span className="text-yellow-500">
-              {peakFromYear.toFixed(0)} MW
+              {` ${peakFromYear.toFixed(0)}`} MW
             </span>{" "}
-            last year.
           </div>
           <div className="supersmalltext text-slate-900">
             {peakFromYearDayAndTime}-{endOfPeakWindowYear}
