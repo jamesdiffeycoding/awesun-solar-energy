@@ -50,7 +50,7 @@ export default function Header({ peakData }) {
             last month.
           </div>
           <div className="supersmalltext text-slate-900">
-            {peakFromWeekDayAndTime}-{endOfPeakWindowMonth}
+            {peakFromMonthDayAndTime}-{endOfPeakWindowMonth}
           </div>
           <div className="pt-1">
             <span className="text-yellow-500">
