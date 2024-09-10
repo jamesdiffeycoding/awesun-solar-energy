@@ -22,9 +22,10 @@ export default function SolarApp({ allData }) {
   const [sunSize, setSunSize] = useState(60); // default size
   const [cloudOpacityState, setCloudOpacityState] = useState(20);
 
-  const [barHoveredInformation, setBarHoveredInformation] =
-    useState("Hover below to see");
-  const [barHovered, setBarHovered] = useState("data");
+  const [barHoveredInformation, setBarHoveredInformation] = useState(
+    "Hover a time below to see"
+  );
+  const [barHovered, setBarHovered] = useState("the weather change");
 
   const handleDisplay = (event) => {
     setGraphToDisplay(event.target.textContent);
@@ -76,7 +77,7 @@ export default function SolarApp({ allData }) {
 
   return (
     <main>
-      <Header peakData={peakData} />
+      {/* <Header peakData={peakData} /> */}
       <Sun sunSize={sunSize} />
       <Clouds cloudOpacityState={cloudOpacityState} />
       <section className="flex w-full justify-between pl-9 pr-9 fixed bottom-[37%] z-50">
