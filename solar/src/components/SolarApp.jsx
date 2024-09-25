@@ -77,7 +77,7 @@ export default function SolarApp({ allData }) {
 
   return (
     <main>
-      {/* <Header peakData={peakData} /> */}
+      <Header peakData={peakData} />
       <Sun sunSize={sunSize} />
       <Clouds cloudOpacityState={cloudOpacityState} />
       <section className="flex w-full justify-between pl-9 pr-9 fixed bottom-[37%] z-50">
