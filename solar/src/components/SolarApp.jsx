@@ -15,13 +15,15 @@ import {
 } from "@/app/timeAndDateHelpers.js";
 
 export default function SolarApp({ allData }) {
+  // Destructure data
   const { displayData, peakData } = allData;
-  const [graphToDisplay, setGraphToDisplay] = useState("week");
-  const { dataWeek, dataMonth, dataYear } = displayData;
   const { peakFromWeek, peakFromMonth, peakFromYear } = peakData;
+  const { dataWeek, dataMonth, dataYear } = displayData;
+
+  // State
+  const [graphToDisplay, setGraphToDisplay] = useState("week");
   const [sunSize, setSunSize] = useState(60); // default size
   const [cloudOpacityState, setCloudOpacityState] = useState(20);
-
   const [barHoveredInformation, setBarHoveredInformation] = useState(
     "Hover a time below to see"
   );
