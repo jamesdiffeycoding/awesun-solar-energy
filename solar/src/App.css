@@ -46,7 +46,6 @@
   display: flex;
   height: 100%;
   align-items: flex-end;
-  /* flex-basis: 0.25%; */
 }
 
 .break {
@@ -74,7 +73,6 @@
 
 .sunCircle {
   animation: shine 5s ease-in-out infinite;
-  /* z-index: 1000; */
   width: 100%;
   height: 100%;
   border-radius: 50%;
@@ -132,14 +130,14 @@
 }
 
 .image-container {
-  overflow: hidden; /* Ensure content outside the container is not visible */
+  overflow: hidden; 
   position: relative;
-  width: 100%; /* Adjust width as needed */
+  width: 100%;
 }
 
 .moving-clouds {
   top: 0;
   left: 100%;
-  width: 200%; /* Double the width of the container to ensure seamless repeat */
-  animation: cloud-breeze 300s linear infinite; /* Adjust duration and easing as needed */
+  width: 200%; 
+  animation: cloud-breeze 300s linear infinite; 
 }
